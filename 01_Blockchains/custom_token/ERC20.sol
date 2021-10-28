@@ -62,16 +62,25 @@ contract ERC20Basic is IERC20{
         balances[msg.sender] = totalSupply_;
     }
     
+    //Para devolver la cantidad de tokens totales
     function totalSupply() public override view returns (uint256){
-        return 0;
+        return totalSupply_;
+    }
+    
+    //Incrementar la cantidad total con un numero de tokens // el minado
+    function increaseTotalSupply(unit newTokensAmount) public {
+        totalSupply_ += newTokensAmount;
+        balance[msg.sender] += newTokensAmount;
     }
 
-    function balanceOf(address account) public override view returns (uint256){
-        return 0;
+    //Para saber la cantidad de tokens de un address
+    function balanceOf(address tokenOwner) public override view returns (uint256){
+        return balances[tokenOwner];
     }
 
-    function allowance(address owner, address spender) public override view returns (uint256){
-        return 0;
+    //Saber cuantos tokens puede usar la persona delegada del propietario de los tokens
+    function allowance(address owner, address delegate) public override view returns (uint256){
+        return allowed[owner][delegate];
     }
     
     function transfer(address recipient, uint256 amount) public override returns (bool){
