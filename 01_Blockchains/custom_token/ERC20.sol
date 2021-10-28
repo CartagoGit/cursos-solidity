@@ -56,6 +56,12 @@ contract ERC20Basic is IERC20{
     mapping (address => mapping (address => uint)) allowed;
     uint256 totalSupply_;
     
+    //El minuto 0, el momento donde se crea la moneda virtual, el constructor
+    constructor (uint256 initialSupply) public{
+        totalSupply_ = initialSupply;
+        balances[msg.sender] = totalSupply_;
+    }
+    
     function totalSupply() public override view returns (uint256){
         return 0;
     }
