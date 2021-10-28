@@ -83,8 +83,13 @@ contract ERC20Basic is IERC20{
         return allowed[owner][delegate];
     }
     
-    function transfer(address recipient, uint256 amount) public override returns (bool){
-        return false;
+    //Para transferir tokens de un adress a otro, usamos los metodos sub y add de la libreria que importamos
+    function transfer(address recipient, uint256 numTokens) public override returns (bool){
+        require(numTokens <= balances[msg.sender]);
+        balances[msg.sender] = balances[msg.sender].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
+        balances[recipient] = balances[recipient].add(numTokens);
+        emit Transfer(msg.sender, recipient, numTokens);
+        return true;
     }
     
     function approve(address spender, uint256 amount) public override returns (bool){
