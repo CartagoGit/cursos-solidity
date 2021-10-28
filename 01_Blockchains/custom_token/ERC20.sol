@@ -68,9 +68,9 @@ contract ERC20Basic is IERC20{
     }
     
     //Incrementar la cantidad total con un numero de tokens // el minado
-    function increaseTotalSupply(unit newTokensAmount) public {
+    function increaseTotalSupply(uint newTokensAmount) public {
         totalSupply_ += newTokensAmount;
-        balance[msg.sender] += newTokensAmount;
+        balances[msg.sender] += newTokensAmount;
     }
 
     //Para saber la cantidad de tokens de un address
