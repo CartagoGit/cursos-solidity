@@ -36,7 +36,11 @@ interface IERC20{
     
 }
 
-
+//PARA HACER PRUEBAS CON VARIAS WALLETS
+// Direccion inicial - Cartago-> 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+//Pepe -> 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
+//Maria -> 0x0A098Eda01Ce92ff4A4CCb7A4fFFb5A43EBC70DC
+//
 //Implementacion de las funciones del token ERC20
 contract ERC20Basic is IERC20{
     
