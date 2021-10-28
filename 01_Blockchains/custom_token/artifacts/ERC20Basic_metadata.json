@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.9+commit.e5eed63a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -90,11 +90,11 @@
 	},
 	"sources": {
 		"01_Blockchains/custom_token/ERC20.sol": {
-			"keccak256": "0x632f37fe0316e898e8f76aa8d2dc32fda90f055289ac169a358474d2b243a057",
+			"keccak256": "0x552c2ac81af29614959d37196280fe4aa08cba24c3e411af96a34256fac2d891",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c737685b5e806ff68c7c4a807e8c4ce720fa0ef6da2342af446d6e1dec724141",
-				"dweb:/ipfs/QmVamJar44pW81QFcJBFgwXgQjWdcbxzSkgnnFtsFSGJXU"
+				"bzz-raw://7898f1f757cb108959779278587bbd8a5aa3e63c15d1311c2d65e416ce9a2a43",
+				"dweb:/ipfs/QmaKWxzXxEeYsUFkE8VUTHRNEFXWDAZgcjaks93uUryA6S"
 			]
 		},
 		"01_Blockchains/custom_token/SafeMath.sol": {
