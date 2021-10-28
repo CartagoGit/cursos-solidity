@@ -51,6 +51,11 @@ contract ERC20Basic is IERC20{
     
     using SafeMath for uint256;
     
+    //Mapeo de la cantidad y los poseedores de los tokens
+    mapping (address => uint) balances;
+    mapping (address => mapping (address => uint)) allowed;
+    uint256 totalSupply_;
+    
     function totalSupply() public override view returns (uint256){
         return 0;
     }
