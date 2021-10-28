@@ -99,7 +99,15 @@ contract ERC20Basic is IERC20{
         return true;
     }
     
-    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool){
-        return false;
+    //Para transferir tokens con un intermediario. NO es una transferencia directa entre el poseedor y el comprador. Nosotros seriamos el intermediario.
+    function transferFrom(address owner, address buyer, uint256 numTokens) public override returns (bool){
+        require(numTokens <= balances[owner]);
+        require(numTokens <= allowed[owner][msg.sender]);
+        
+        balances[owner] = balances[owner].sub(numTokens);
+        allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens);
+        balances[buyer]=balances[buyer].add(numTokens);
+        emit Transfer(owner, buyer, numTokens);
+        return true;
     }
 }
