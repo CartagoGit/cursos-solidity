@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.4 <=0.8.9;
+pragma solidity >=0.4.4 <=0.7.0;
 pragma experimental ABIEncoderV2;
 import "./SafeMath.sol";
 
@@ -36,7 +36,15 @@ interface IERC20{
     
 }
 
+
+//Implementacion de las funciones del token ERC20
 contract ERC20Basic is IERC20{
+    
+    //Cosntantes del contrato
+    string public constant name = "CartagoToken";
+    string public constant symbol = "Cart";
+    uint8 public constant decimals = 18;
+    
     
     event Transfer(address indexed from, address indexed to, uint256 tokens);
     event Approval(address indexed owner, address indexed spender, uint256 tokens);
