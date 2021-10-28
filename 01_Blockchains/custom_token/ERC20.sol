@@ -41,8 +41,8 @@ interface IERC20{
 contract ERC20Basic is IERC20{
     
     //Cosntantes del contrato
-    string public constant name = "CartagoToken";
-    string public constant symbol = "Cart";
+    string public constant name = "CartagoToken_Curso01";
+    string public constant symbol = "Car01";
     uint8 public constant decimals = 18;
     
     
