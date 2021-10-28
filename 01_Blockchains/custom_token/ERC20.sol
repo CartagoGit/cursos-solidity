@@ -24,7 +24,7 @@ interface IERC20{
     function approve(address spender, uint256 amount) external returns (bool);
     
     //Devuelve un valor booleano con el resultado de la operacion de paso de una cantidad de tokens usando el metodo allowance()
-    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+    function transferFrom(address spender, address recipient, uint256 amount) external returns (bool);
     
     //EVENTOS-----------------------------------
     
