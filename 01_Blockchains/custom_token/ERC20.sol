@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.4 <=0.7.0;
+pragma solidity >=0.4.4 <=0.8.9;
 pragma experimental ABIEncoderV2;
 import "./SafeMath.sol";
 
@@ -43,18 +43,19 @@ interface IERC20{
     
 }
 
+//Contrato Creado -> 0x18c5537Db8a32Affcac32916f597008a07c629Ab
 //PARA HACER PRUEBAS CON VARIAS WALLETS
-// Direccion inicial - Cartago-> 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
-//Pepe -> 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
-//Maria -> 0x0A098Eda01Ce92ff4A4CCb7A4fFFb5A43EBC70DC
+// Direccion inicial - Cartago-> 0xc43D4D85D321c24d4Ae11fEbc36C0fF7c353fc94
+//Cuenta de pruebas -> 0x5A8B9d31985a7246827F873426c2ef635924C0e5
 //
 //Implementacion de las funciones del token ERC20
 contract ERC20Basic is IERC20{
     
     //Cosntantes del contrato
     string public constant name = "CartagoToken_Curso01";
-    string public constant symbol = "Car01";
-    uint8 public constant decimals = 18;
+    //string public constant symbol = "CN-Curso-01";
+    string public constant symbol = "CartagoTkn1";
+    uint8 public constant decimals = 2;
     
     
     event Transfer(address indexed from, address indexed to, uint256 tokens);
