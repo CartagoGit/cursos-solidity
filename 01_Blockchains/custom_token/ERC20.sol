@@ -3,7 +3,14 @@ pragma solidity >=0.4.4 <=0.7.0;
 pragma experimental ABIEncoderV2;
 import "./SafeMath.sol";
 
+
+//---------------------------------------------------------------->
+//Para añadir Ethers de test en la red RINKEBY https://www.rinkeby.io/#faucet
+//<----------------------------------------------------------------
+
+
 //Interface de nuestro token ERC20-----------------------------------
+
 interface IERC20{
     
     //INTERFACE BASICAS-----------------------------------
