@@ -5,7 +5,9 @@ import "./SafeMath.sol";
 
 
 //---------------------------------------------------------------->
-//Para añadir Ethers de test en la red RINKEBY https://www.rinkeby.io/#faucet
+//Para añadir Ethers de test en la red RINKEBY 
+//https://www.rinkeby.io/#faucet
+//https://rinkeby.etherscan.io/
 //<----------------------------------------------------------------
 
 
