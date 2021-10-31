@@ -3,6 +3,8 @@ pragma experimental ABIEncoderV2;
 import "./ERC20.sol";
 
 contract Disney{
+    
+    //----------------------------------------------- DECLARACIONES INICIALES ------------------------------------
     // Instancia al contrato token
     ERC20Basic private token;
     
@@ -24,5 +26,12 @@ contract Disney{
     // Mapping para el registro de clientes
     mapping (address=> cliente) public Clientes;
     
+    //----------------------------------------------- GESTION DE TOKENS ------------------------------------
+    
+    // Funcion para establecer el precio de un token
+    function precioTokens(uint _numTokens) internal pure returns (uint){
+        //Conversion de Tokens a Ethers: Token -> 1 ether (Puede ser conversion a lo que queramos, el ejemplo es de 1:1)
+        return _numTokens*(1 ether);
+    }
     
 }
