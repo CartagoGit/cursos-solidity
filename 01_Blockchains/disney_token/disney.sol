@@ -61,9 +61,24 @@ contract Disney{
         
     }
     
-    //Para detectar el numero de tokens disponibles en el contrato 
+    // Para detectar el numero de tokens disponibles en el contrato 
     function balanceOf() public view returns (uint){
         return token.balanceOf(address(this));
     }
     
+    // Visualizar el numero de tokens restantes de un Clientes
+    function MisTokens() public view returns (uint){
+        return token.balanceOf(msg.sender);
+    }
+    
+    // Generar mas tokens
+    function GeneraTokens(uint _numTokens) public Unicamente(msg.sender) {
+        token.increaseTotalSupply(_numTokens);
+    }
+    
+    // Modificador para controlar las funciones ejecutables unicamente por nosotros (disney) y no por los usuarios
+    modifier Unicamente(address _direccion){
+        require(_direccion == owner, "No tienes permisos para ejecutar esta funcion.");
+        _;
+    }
 }
