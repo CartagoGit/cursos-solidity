@@ -167,4 +167,19 @@ contract Disney{
         return HistorialAtracciones[msg.sender];
     }
     
+    //Para devolver los tokens y recibir sus etherum
+    function DevolverTokens (uint _numTokens) public payable {
+        // El numero de tokens que se intenta devolver tiene que ser positivo
+        require (_numTokens>0, "Necesitas devolver una cantidad positiva de tokens");
+        
+        // El usuario tiene que tener la misma o mayor cantidad de tokens que los que intenta devolver
+        require (_numTokens <= MisTokens(), "No puedes devolver mas tokens de los que dispones");
+        
+        // El cliente devuelve los tokens
+        token.transferUser(msg.sender, address(this), _numTokens);
+        
+        //Disney devuelve los ethers al cliente
+        msg.sender.transfer(PrecioTokens(_numTokens));
+    }
+    
 }
