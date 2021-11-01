@@ -86,7 +86,7 @@ contract Disney{
     
     // Eventos
     event disfruta_atraccion(string);
-    event nueva_atraccion(string);
+    event nueva_atraccion(string, uint);
     event baja_atraccion(string);
     
     // Estructura de datos de la atraccion
@@ -100,11 +100,21 @@ contract Disney{
     mapping (string => atraccion) public MappingAtracciones;
     
     // Array para alamacenar el nombre de las atracciones
-    string [] atracciones;
+    string [] Atracciones;
     
     // Mapping para relacionar una ideantidad (cliente) con su historial en DISNEY
     mapping (address => string[]) HistorialAtracciones;
     
-
+    //Funcion para crear una nueva atraccion (SOLO ES EJECUTABLE POR DISNEY)
+    function NuevaAtraccion(string  memory _nombreAtraccion, uint _precio) public Unicamente(msg.sender){
+        // Creacion de una atraccion
+        MappingAtracciones[_nombreAtraccion] = atraccion(_nombreAtraccion, _precio, true);
+        
+        // almacenar en una array el nombre de la atraccion
+        Atracciones.push(_nombreAtraccion);
+        
+        // Emision de evento para la nueva Atraccion
+        emit nueva_atraccion(_nombreAtraccion, _precio);
+    }
     
 }
