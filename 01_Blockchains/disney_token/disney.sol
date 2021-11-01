@@ -162,4 +162,9 @@ contract Disney{
         
     }
     
+    //Visualiza el historial del cliente en las atracciones
+    function HistorialAtraccionesCliente () public view returns (string [] memory){
+        return HistorialAtracciones[msg.sender];
+    }
+    
 }
