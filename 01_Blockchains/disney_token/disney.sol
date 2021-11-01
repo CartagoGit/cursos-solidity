@@ -57,7 +57,7 @@ contract Disney{
         token.transfer(msg.sender, _numTokens);
         
         // Registro de tokens tokens_comprados
-        Clientes[msg.sender].tokens_comprados = _numTokens;
+        Clientes[msg.sender].tokens_comprados += _numTokens;
         
     }
     
@@ -81,4 +81,7 @@ contract Disney{
         require(_direccion == owner, "No tienes permisos para ejecutar esta funcion.");
         _;
     }
+    
+    //----------------------------------------------- GESTION DE DISNEY ------------------------------------
+    
 }
