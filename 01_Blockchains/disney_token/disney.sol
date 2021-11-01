@@ -84,4 +84,27 @@ contract Disney{
     
     //----------------------------------------------- GESTION DE DISNEY ------------------------------------
     
+    // Eventos
+    event disfruta_atraccion(string);
+    event nueva_atraccion(string);
+    event baja_atraccion(string);
+    
+    // Estructura de datos de la atraccion
+    struct atraccion {
+        string nombre_atraccion;
+        uint precio_atraccion;
+        bool estado_atraccion;
+    }
+    
+    // Mapping para relacionar un nombre de una atraccion con una estructura de datos de la atraccion
+    mapping (string => atraccion) public MappingAtracciones;
+    
+    // Array para alamacenar el nombre de las atracciones
+    string [] atracciones;
+    
+    // Mapping para relacionar una ideantidad (cliente) con su historial en DISNEY
+    mapping (address => string[]) HistorialAtracciones;
+    
+
+    
 }
