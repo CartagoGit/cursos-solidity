@@ -2,4 +2,5 @@
 
 ## Rama 01_Blockchains
 
-### Primer Token
+### Primer Curso blockchain TERMINADO
+Terminado, a excepcion de la parte de phyton que ya se realizara en un curso siguiente exactamente igual ya que la seccion es copiada de un curso a otro ya que los autores son los mismos.
