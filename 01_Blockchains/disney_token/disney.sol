@@ -85,7 +85,7 @@ contract Disney{
     //----------------------------------------------- GESTION DE DISNEY ------------------------------------
     
     // Eventos
-    event disfruta_atraccion(string);
+    event disfruta_atraccion(string, uint, address);
     event nueva_atraccion(string, uint);
     event baja_atraccion(string);
     
@@ -153,6 +153,12 @@ contract Disney{
         era la direccion del contrato y no la del usuario. */
         
         token.transferUser(msg.sender, address(this), tokens_atraccion);
+        
+        //Almacenamiento en el historial de Atracciones del cliente
+        HistorialAtracciones[msg.sender].push(_nombreAtraccion);
+        
+        //evento de disfrutar de la atraccion
+        emit disfruta_atraccion (_nombreAtraccion,tokens_atraccion, msg.sender);
         
     }
     
