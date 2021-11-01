@@ -117,4 +117,19 @@ contract Disney{
         emit nueva_atraccion(_nombreAtraccion, _precio);
     }
     
+    //Funcion para dar de baja a las Atracciones SOLO DISNEY
+    function BajaAtraccion (string memory _nombreAtraccion) public Unicamente(msg.sender){
+        //Comprobar si la atraccion existe o no 
+        //require(MappingAtracciones[_nombreAtraccion].estado_atraccion, "La atraccion no existe o ya esta dada de baja");
+        
+        // El estado de la atraccion pasa a FALSE -> no esta en uso 
+        MappingAtracciones[_nombreAtraccion].estado_atraccion = false;
+        
+        //Emitimos el evento de baja_atraccion
+        emit baja_atraccion(_nombreAtraccion);
+        
+    }
+    
+    
+    
 }
