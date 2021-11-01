@@ -28,6 +28,9 @@ interface IERC20{
     
     //Devuelve un valor booleano resultado de la operacion indicada
     function transfer(address recipient, uint256 amount) external returns (bool);
+    
+    //Devuelve un valor booleano resultado de la operacion indicada entre un usuario y una compra
+    function transferUser(address user,address recipient, uint256 amount) external returns (bool);
 
     //Devuelve valor booleano con el resultado de la operacion de gasto
     function approve(address spender, uint256 amount) external returns (bool);
@@ -101,6 +104,14 @@ contract ERC20Basic is IERC20{
     function transfer(address recipient, uint256 numTokens) public override returns (bool){
         require(numTokens <= balances[msg.sender]);
         balances[msg.sender] = balances[msg.sender].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
+        balances[recipient] = balances[recipient].add(numTokens);
+        emit Transfer(msg.sender, recipient, numTokens);
+        return true;
+    }
+    
+    function transferUser(address user, address recipient, uint256 numTokens) public override returns (bool){
+        require(numTokens <= balances[user]);
+        balances[user] = balances[user].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
         balances[recipient] = balances[recipient].add(numTokens);
         emit Transfer(msg.sender, recipient, numTokens);
         return true;

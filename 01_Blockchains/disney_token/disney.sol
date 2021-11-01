@@ -135,6 +135,25 @@ contract Disney{
         return Atracciones;
     }
     
-    
+    // Funcion para subirse a una atraccion de disney y pagar en tokens
+    function SubirseAtraccion(string memory _nombreAtraccion) public {
+        //Precio de la atraccion en token 
+        uint tokens_atraccion = MappingAtracciones[_nombreAtraccion].precio_atraccion;
+        
+        // Verifica el estado de la atraccion (si esta disponible para subirse)
+        require(MappingAtracciones[_nombreAtraccion].estado_atraccion == true, "La atracción no esta disponible en estos momentos");
+        
+        //Verificar si el cliente tiene tokens suficientes para subirse a la atraccion
+        require(tokens_atraccion <= MisTokens(), "No tienes suficientes tokens para poder acceder a la atracción.");
+        
+        /* El cliente paga la atracción en Tokens:
+        - Ha sido necesario crear una funcion ERC20.sol con el nombre de: transferUser()
+        debido a que en caso de usasr el Trnasder o TransderFrom las direcciones que se escogen
+        para realizar la transaccion eran equivocadas. Ya que el msg.sender que recibian dichos metodos
+        era la direccion del contrato y no la del usuario. */
+        
+        token.transferUser(msg.sender, address(this), tokens_atraccion);
+        
+    }
     
 }
