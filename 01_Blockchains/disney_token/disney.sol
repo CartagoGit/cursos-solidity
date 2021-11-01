@@ -130,6 +130,11 @@ contract Disney{
         
     }
     
+    //Funcion para visualizar las Atracciones
+    function AtraccionesDisponibles()public view returns (string [] memory){
+        return Atracciones;
+    }
+    
     
     
 }
