@@ -1,0 +1,36 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"02_Solidity/BLOQUE 1 - Conceptos básicos/Primeros pasos en solidity/conceptos_basicos.sol": "PrimerContrato"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"02_Solidity/BLOQUE 1 - Conceptos básicos/Primeros pasos en solidity/conceptos_basicos.sol": {
+			"keccak256": "0x3a832682d39e5624a8cb342261d5a10582f92bfcb12c072207c124564c5446f4",
+			"urls": [
+				"bzzr://642b8c653a72e0f93fbdba04aca012a5f201c9cb41a4803fda1dd62296f471d6"
+			]
+		}
+	},
+	"version": 1
+}
