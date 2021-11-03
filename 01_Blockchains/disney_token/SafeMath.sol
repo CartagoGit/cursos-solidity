@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.4 <=0.8.9;
-pragma experimental ABIEncoderV2;
+//pragma experimental ABIEncoderV2;
 
 
 // Implementacion de la libreria SafeMgiath para realizar las operaciones de manera segura

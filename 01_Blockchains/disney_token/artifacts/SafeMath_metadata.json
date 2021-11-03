@@ -26,9 +26,9 @@
 	},
 	"sources": {
 		"01_Blockchains/disney_token/SafeMath.sol": {
-			"keccak256": "0x1c9b3372a5b894f5456a0a7396dcc0a96678c89e0cd1e74d442b6b7b7daf273c",
+			"keccak256": "0x1a1a3cf5bb195060a7c6d1254d2d27cd659837625cb5068fac3ca893eb6c4b2a",
 			"urls": [
-				"bzzr://40f4fbf9656dbfcc833bc26566428155da5e10c438b21f08f2efa4ece79d6982"
+				"bzzr://6770bae434ee6724ee386ce1cfb93da8b57bc327bbcab9bf6576f356b12d0011"
 			]
 		}
 	},

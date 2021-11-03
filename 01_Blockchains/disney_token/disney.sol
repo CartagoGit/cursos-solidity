@@ -9,7 +9,7 @@ contract Disney{
     ERC20Basic private token;
     
     // Direccion de Disney (owner)
-    address payable public owner;
+    address public owner;
     
     // Constructor
     constructor () public {
