@@ -1,0 +1,36 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"02_Solidity/BLOQUE 1 - Conceptos básicos/pruebas_random.sol": "pruebas"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"02_Solidity/BLOQUE 1 - Conceptos básicos/pruebas_random.sol": {
+			"keccak256": "0x1e3a8bef6ba1faae89f4148c9a0ce373e84aea2c445c85a6efcd8c5d2ee045b4",
+			"urls": [
+				"bzzr://3626e16ffd962950fced8e6e0e7812cccde52f204c6fda40018a7b05fe1666a6"
+			]
+		}
+	},
+	"version": 1
+}
