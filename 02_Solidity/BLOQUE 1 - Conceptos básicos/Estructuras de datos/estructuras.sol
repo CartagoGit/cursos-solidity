@@ -29,7 +29,7 @@ contract Estructuras{
         
     }
     
-    ONG caritas = ONG(0x123214123,"caritas");
+    ONG caritas = ONG(0x5A8B9d31985a7246827F873426c2ef635924C0e5,"caritas");
     
     
 }
