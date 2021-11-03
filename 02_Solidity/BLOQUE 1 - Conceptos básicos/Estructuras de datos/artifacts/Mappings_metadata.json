@@ -1,0 +1,172 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_nombre",
+						"type": "string"
+					},
+					{
+						"name": "_dinero",
+						"type": "uint256"
+					}
+				],
+				"name": "elegirDinero",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_numeroDni",
+						"type": "uint256"
+					},
+					{
+						"name": "_nombre",
+						"type": "string"
+					},
+					{
+						"name": "_edad",
+						"type": "uint256"
+					}
+				],
+				"name": "dni_Persona",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_nombre",
+						"type": "string"
+					}
+				],
+				"name": "consultarDinero",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "mapElegirNumero",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "consultarNumero",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_dni",
+						"type": "uint256"
+					}
+				],
+				"name": "visualizarPersona",
+				"outputs": [
+					{
+						"components": [
+							{
+								"name": "nombre",
+								"type": "string"
+							},
+							{
+								"name": "edad",
+								"type": "uint256"
+							}
+						],
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"name": "_numero",
+						"type": "uint256"
+					}
+				],
+				"name": "elegirNumero",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"02_Solidity/BLOQUE 1 - Conceptos básicos/Estructuras de datos/mapping.sol": "Mappings"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"02_Solidity/BLOQUE 1 - Conceptos básicos/Estructuras de datos/mapping.sol": {
+			"keccak256": "0x69b95532bd569c8fcc8166891c2b1c8632ce08d9fa2e4ff1304e4e261f4e26e2",
+			"urls": [
+				"bzzr://f405fac8c39a6b57e3cf4b19f0e531ef351bcfa06389ae2c9e27f06a9f85a92f"
+			]
+		}
+	},
+	"version": 1
+}
