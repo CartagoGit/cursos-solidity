@@ -19,7 +19,7 @@ contract contractNotas{
     string [] revisiones;
     
     // Eventos
-    event event_alumno_evaluado(bytes32);
+    event event_alumno_evaluado(bytes32, uint);
     event event_revision(string);
     
     //Creamos la funciona para evaluar a los alumnos
@@ -29,10 +29,11 @@ contract contractNotas{
         //Relacion entre el hash de la identificacion del alumno y su nota
         mapNotas[hash_idAlumno] = _nota;
         
-        emit event_alumno_evaluado(hash_idAlumno);
+        emit event_alumno_evaluado(hash_idAlumno, _nota);
     
     }
     
+    // modificador para controlar que solo pueda evaluar el profesor
     modifier onlyProfesor(address _direccion){
         require(profesor==_direccion,"Solo el profesor puede evaluar a los alumnos");
         _;
