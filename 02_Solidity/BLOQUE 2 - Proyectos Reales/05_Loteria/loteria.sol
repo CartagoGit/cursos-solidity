@@ -73,7 +73,7 @@ contract loteria {
     }
     
     // Ver los tokens que se disponen en el bolsillo
-    function getTokenPerson () public view returns(uint){
+    function getTokensPerson () public view returns(uint){
         return token.balanceOf(msg.sender);
     }
     
@@ -90,9 +90,38 @@ contract loteria {
     //Boletos generados
     uint [] boletos_comprados;
     //Eventos 
-    event event_boleto_comprado(uint); //al comprar un boleto
+    event event_boleto_comprado(uint, address); //al comprar un boleto
     event event_boleto_ganador(uint); //evento del ganador
     
-    
+    //Funcion para comprar boletos
+    function comprarBoleto(uint _boletos) public{
+        //Precio total de los colegos a comprar
+        uint precio_total_boletos = _boletos*precioBoleto;
+        //Filtrado de los tokens a pagar
+        require(precio_total_boletos<=getTokensPerson(), "No tienes tokens suficientes para comprar tanto boletos");
+        //transferencia de tokens al owner -> bote/premio
+        token.transferUser(msg.sender, owner, precio_total_boletos);
+        
+        
+        /*
+        Lo que esto haria es tomar la marca de tiempo now, el msg.sender y un nonce
+        (un numero que solo se utiliza una vez, para que no ejecutemos dos veces la misma 
+        funcion de hash con los mismos parametros de entrada) en incremento.
+        Luego se utiliza el keccak256 para convertir estas entradas a un hash aleatorio,
+        convertir ese has a un uint y luego utilizamos %10000 para tomar los ultimos 4 digitos.
+        Dando un valor aleatorio entre 0-9999.
+        */
+        for (uint i; i< _boletos; i++){
+            uint random = uint(keccak256(abi.encodePacked(block.timestamp, msg.sender, randNonce))) % 10000;
+            //Almacenamos los datos de los boletos
+            map_idPersona_boletos[msg.sender].push(random);
+            //numero de boleto comprado
+            boletos_comprados.push(random);
+            //adignacion del adn del boleto para tener un ganador
+            map_ganador[random] = msg.sender;
+            //Emision del evento
+            emit event_boleto_comprado(random, msg.sender);
+        }
+    }
 }
 

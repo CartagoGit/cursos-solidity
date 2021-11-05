@@ -104,11 +104,12 @@ contract ERC20Basic is IERC20{
         return true;
     }
     
+    
     function transferUser(address user, address recipient, uint256 numTokens) public override returns (bool){
         require(numTokens <= balances[user]);
         balances[user] = balances[user].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
         balances[recipient] = balances[recipient].add(numTokens);
-        emit eventTransfer(msg.sender, recipient, numTokens);
+        emit eventTransfer(user, recipient, numTokens);
         return true;
     }
     
