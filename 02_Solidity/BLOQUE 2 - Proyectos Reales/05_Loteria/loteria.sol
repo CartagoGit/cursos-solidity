@@ -39,5 +39,28 @@ contract loteria {
         _;
     }
     
+    // Funcion para comprar tokens
+    function buyTokens(uint _numTokens) public payable {
+        //Calcular el coste de los tokens
+        uint coste = precioTokens(_numTokens);
+        // Se requiere que el valor de ethers pagados sea equivalente al coste
+        require (msg.value >= coste, "Compra menos Tokens o paga con mas Ethers");
+        //calcular el cambio, la diferencia a devolver entre lo pagado y el coste
+        uint returnValue = msg.value - coste;
+        //Obtener el balance de Tokens del contrato
+        uint balance = tokensDisponibles();
+        //Filtro para evaluar los tokens a comprar con los tokens disponibles 
+        require (_numTokens <= balance, "Compra un numero de Tokens adecuado");
+        //transferencia de la diferencia
+        payable(msg.sender).transfer(returnValue);
+        // transferencia de tokens al comprador
+        token.transfer(msg.sender, _numTokens);
+    }
+    
+    // Balance de tokens en el contrato
+    function tokensDisponibles() public pure returns(uint){
+        return 0;
+    }
+    
 }
 
