@@ -92,6 +92,7 @@ contract loteria {
     //Eventos 
     event event_boleto_comprado(uint, address); //al comprar un boleto
     event event_boleto_ganador(uint); //evento del ganador
+    event event_tokens_devueltos(uint, address); // evento al devolver los tokens
     
     //Funcion para comprar boletos
     function comprarBoleto(uint _boletos) public{
@@ -144,6 +145,22 @@ contract loteria {
         address direccion_ganador = map_ganador[eleccion];
         //Enviarle los tokens del premio al ganador
         token.transferUser(msg.sender, direccion_ganador, balanceBote());
+    }
+    
+    //Funcioon para devolver tokens
+    function getBackTokens(uint _numTokens) public payable{
+        // El numero de tokens a devolver debe ser mayor de 0
+        require(_numTokens>0, "Necesitas devolver un numero positivo de tokens.");
+        //El usuario/cliente debe tener los tokens que desea devolver
+        require(getTokensPerson()>=_numTokens, "Debes disponer del numero de tokens que deseas devolver");
+        //DEVOLUCION:
+        // 1. El cliente devuelva los tokens
+        // 2. La loteria paga los tokens devueltos
+        token.transferUser(msg.sender, address(this), _numTokens); // Al contrato ya que el owner sirve de bote
+        payable(msg.sender).transfer(precioTokens(_numTokens));
+        //Evento
+        emit event_tokens_devueltos(_numTokens, msg.sender);
+        
     }
 }
 
