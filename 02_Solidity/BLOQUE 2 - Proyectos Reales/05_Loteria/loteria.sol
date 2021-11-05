@@ -102,7 +102,6 @@ contract loteria {
         //transferencia de tokens al owner -> bote/premio
         token.transferUser(msg.sender, owner, precio_total_boletos);
         
-        
         /*
         Lo que esto haria es tomar la marca de tiempo now, el msg.sender y un nonce
         (un numero que solo se utiliza una vez, para que no ejecutemos dos veces la misma 
@@ -122,6 +121,11 @@ contract loteria {
             //Emision del evento
             emit event_boleto_comprado(random, msg.sender);
         }
+    }
+    
+    // Visualizar el numero de boletos de una Persona
+    function getBoletosPerson() public view returns (uint [] memory){
+        return map_idPersona_boletos[msg.sender];
     }
 }
 
