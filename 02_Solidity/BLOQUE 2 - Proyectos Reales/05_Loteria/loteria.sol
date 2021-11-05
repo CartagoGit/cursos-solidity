@@ -22,5 +22,13 @@ contract loteria {
     }
     
     // ------------------------------------ TOKEN ---------------------------------
+    
+    //Establecer el precio de los tokens en ethers
+    function precioTokens(uint _numTokens) internal pure returns (uint){
+        return _numTokens*(1 ether);
+    }
+    
+    
+    
 }
 
