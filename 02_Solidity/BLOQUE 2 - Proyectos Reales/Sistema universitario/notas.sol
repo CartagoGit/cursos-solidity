@@ -39,4 +39,15 @@ contract contractNotas{
         _;
     }
     
+    // Visualizar notas
+    function getNotas(string memory _idAlumno) public view returns(uint){
+        //Hash del alumno
+        bytes32 hash_idAlumno = keccak256(abi.encodePacked(_idAlumno));
+        // Nota asociada al hash del alumno
+        uint nota_alumno = mapNotas[hash_idAlumno];
+        //visualizar la nota_alumno
+        return nota_alumno;
+    }
+    
+    
 }
