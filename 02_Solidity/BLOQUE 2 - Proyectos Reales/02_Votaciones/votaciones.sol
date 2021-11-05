@@ -42,4 +42,20 @@ contract votacion{
     function getCandidatos () public view returns(string[] memory){
         return candidatos;
     }
+    
+    //Funcion para votar
+    function votar(string memory _candidato) public {
+        //Calculamos el hash de la persona que ejecuta esa funcion
+        bytes32 hash_votante = keccak256(abi.encodePacked(msg.sender));
+        
+        //Verificamos si el votante ya ha votado
+        for(uint i=0; i<votantes.length-1; i++){
+            require(votantes[i]!=hash_votante, "Ya has votado. No puedes votar mas veces");
+        }
+        //Almacenamos el has del votante y añadimos su voto al candidato
+        votantes.push(hash_votante);
+        mapVotosCandidato[_candidato]++;
+    }
+    
+
 }
