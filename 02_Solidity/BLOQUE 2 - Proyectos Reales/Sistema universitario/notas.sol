@@ -56,5 +56,10 @@ contract contractNotas{
         emit event_revision(_idAlumno);
     }
     
+    //Funcion para ver los alumnos que han solicitado la revision del examen
+    function getRevisiones() public view onlyProfesor(msg.sender) returns(string[] memory){
+        return revisiones;
+    }
+    
     
 }
