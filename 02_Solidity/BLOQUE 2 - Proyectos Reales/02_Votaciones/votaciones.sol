@@ -92,9 +92,27 @@ contract votacion{
         string[] memory resultados = new string[] (numCandidatos);
         for(uint i=0; i<candidatos.length; i++){
             resultados[i] = string(abi.encodePacked(candidatos[i],": ", uint2str(getVotosCandidato(candidatos[i]))));
-            }
+        }
         return resultados;
         
     }
 
+    //Funcion para visualziar el candidato con mas votos
+    function resultadoGanador() public view returns (string memory){
+        string memory ganador;
+        string memory textoGanador = "Todavia no hay votaciones";
+        uint votos_maximos=0;
+        for(uint i=0; i<candidatos.length; i++){
+            uint votos_candidato =getVotosCandidato(candidatos[i]);
+            if(votos_candidato>votos_maximos){
+                votos_maximos = votos_candidato;
+                ganador = candidatos[i];
+                textoGanador = string(abi.encodePacked("El ganador es: ",ganador));
+            }else if(votos_candidato == votos_maximos) {
+                ganador = string(abi.encodePacked(ganador," + ", candidatos[i]));
+                textoGanador = string(abi.encodePacked("Hay un empate entre: ",ganador));
+            }
+        }
+        return textoGanador;
+    }
 }
