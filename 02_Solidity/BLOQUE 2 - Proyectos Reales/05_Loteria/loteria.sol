@@ -14,6 +14,9 @@ contract loteria {
     // Numero de tokens a crear
     uint tokens_creados = 10000000;
     
+    //Eventos
+    event eventTokenComprado (uint, address);
+    
     //constructor
     constructor (){
         token = new ERC20Basic(tokens_creados);
@@ -55,6 +58,8 @@ contract loteria {
         payable(msg.sender).transfer(returnValue);
         // transferencia de tokens al comprador
         token.transfer(msg.sender, _numTokens);
+        //evento al comprar token
+        emit eventTokenComprado(_numTokens, msd.sender);
     }
     
     // Balance de tokens en el contrato
@@ -62,5 +67,16 @@ contract loteria {
         return token.balanceOf(contrato);
     }
     
+    //Obtener balance acumulado en el Bote
+    function balanceBote() public view returns (uint){
+        return token.balanceOf(owner);
+    }
+    
+    // Ver los tokens que se disponen en el bolsillo
+    function getTokenPerson () public view returns(uint){
+        return token.balanceOf(msg.sender);
+    }
+    
+    // ------------------------------------ TOKEN ---------------------------------
 }
 
