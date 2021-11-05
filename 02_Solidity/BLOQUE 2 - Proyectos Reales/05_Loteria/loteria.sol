@@ -12,7 +12,7 @@ contract loteria {
     address public contrato;
     
     // Numero de tokens a crear
-    uint public tokens_creados = 10000000;
+    uint tokens_creados = 10000000;
     
     //constructor
     constructor (){
@@ -58,8 +58,8 @@ contract loteria {
     }
     
     // Balance de tokens en el contrato
-    function tokensDisponibles() public pure returns(uint){
-        return 0;
+    function tokensDisponibles() public view returns(uint){
+        return token.balanceOf(contrato);
     }
     
 }
