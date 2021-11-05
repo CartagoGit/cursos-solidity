@@ -49,5 +49,12 @@ contract contractNotas{
         return nota_alumno;
     }
     
+    //Funcion para pedir una reivsion del examen
+    function revisionNota(string memory _idAlumno) public{
+        //Almacenamiento de la identidad del alumno en un array
+        revisiones.push(_idAlumno);
+        emit event_revision(_idAlumno);
+    }
+    
     
 }
