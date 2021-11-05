@@ -48,23 +48,18 @@ interface IERC20{
     
 }
 
-//Contrato Creado -> 
-//PARA HACER PRUEBAS CON VARIAS WALLETS
-// Direccion inicial - Cartago-> 0xc43D4D85D321c24d4Ae11fEbc36C0fF7c353fc94
-//Cuenta de pruebas -> 0x5A8B9d31985a7246827F873426c2ef635924C0e5
-//
 //Implementacion de las funciones del token ERC20
 contract ERC20Basic is IERC20{
     
     //Cosntantes del contrato
-    string public constant name = "CartagoToken_Curso01_Disney";
+    string public constant name = "CartagoToken_Curso02_Loteria";
     //string public constant symbol = "CN-Curso-01";
-    string public constant symbol = "CartagoTkn2";
+    string public constant symbol = "LoteriaTkn";
     uint8 public constant decimals = 2;
     
     
-    event Transfer(address indexed from, address indexed to, uint256 tokens);
-    event Approval(address indexed owner, address indexed spender, uint256 tokens);
+    event eventTransfer(address indexed from, address indexed to, uint256 tokens);
+    event eventApproval(address indexed owner, address indexed spender, uint256 tokens);
     
     using SafeMath for uint256;
     
@@ -74,7 +69,7 @@ contract ERC20Basic is IERC20{
     uint256 totalSupply_;
     
     //El minuto 0, el momento donde se crea la moneda virtual, el constructor
-    constructor (uint256 initialSupply) public{
+    constructor (uint256 initialSupply) {
         totalSupply_ = initialSupply;
         balances[msg.sender] = totalSupply_;
     }
@@ -105,7 +100,7 @@ contract ERC20Basic is IERC20{
         require(numTokens <= balances[msg.sender]);
         balances[msg.sender] = balances[msg.sender].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
         balances[recipient] = balances[recipient].add(numTokens);
-        emit Transfer(msg.sender, recipient, numTokens);
+        emit eventTransfer(msg.sender, recipient, numTokens);
         return true;
     }
     
@@ -113,14 +108,14 @@ contract ERC20Basic is IERC20{
         require(numTokens <= balances[user]);
         balances[user] = balances[user].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
         balances[recipient] = balances[recipient].add(numTokens);
-        emit Transfer(msg.sender, recipient, numTokens);
+        emit eventTransfer(msg.sender, recipient, numTokens);
         return true;
     }
     
     //Para permitir que otra direccion use cierta cantidad de tokens de otro address
     function approve(address delegate, uint256 numTokens) public override returns (bool){
         allowed[msg.sender][delegate] = numTokens;
-        emit Approval(msg.sender, delegate, numTokens);
+        emit eventApproval(msg.sender, delegate, numTokens);
         return true;
     }
     
@@ -132,7 +127,7 @@ contract ERC20Basic is IERC20{
         balances[owner] = balances[owner].sub(numTokens);
         allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens);
         balances[buyer]=balances[buyer].add(numTokens);
-        emit Transfer(owner, buyer, numTokens);
+        emit eventTransfer(owner, buyer, numTokens);
         return true;
     }
 }
