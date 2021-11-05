@@ -37,4 +37,9 @@ contract votacion{
         //Añadimos al candidato en la lista
         candidatos.push(_nombre);
     }
+    
+    //Funcion para visualizar los candidatos
+    function getCandidatos () public view returns(string[] memory){
+        return candidatos;
+    }
 }
