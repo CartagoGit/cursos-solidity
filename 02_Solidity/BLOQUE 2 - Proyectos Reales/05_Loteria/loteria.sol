@@ -59,7 +59,7 @@ contract loteria {
         // transferencia de tokens al comprador
         token.transfer(msg.sender, _numTokens);
         //evento al comprar token
-        emit eventTokenComprado(_numTokens, msd.sender);
+        emit eventTokenComprado(_numTokens, msg.sender);
     }
     
     // Balance de tokens en el contrato
@@ -77,6 +77,22 @@ contract loteria {
         return token.balanceOf(msg.sender);
     }
     
-    // ------------------------------------ TOKEN ---------------------------------
+    // ------------------------------------ LOTERIA ---------------------------------
+    
+    //Precio del boleto en Tokens
+    uint public precioBoleto = 5;
+    //relacion entre la persona que compra los boletos y los numeros de los boletos
+    mapping (address => uint[]) map_idPersona_boletos;
+    //Relacion nevesaria para identificar al ganador
+    mapping (uint => address) map_ganador;
+    //Numero aleatorio
+    uint randNonce = 0;
+    //Boletos generados
+    uint [] boletos_comprados;
+    //Eventos 
+    event event_boleto_comprado(uint); //al comprar un boleto
+    event event_boleto_ganador(uint); //evento del ganador
+    
+    
 }
 
