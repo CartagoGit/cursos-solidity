@@ -25,7 +25,7 @@ contract contractNotas{
     //Creamos la funciona para evaluar a los alumnos
     function evaluar(string memory _idAlumno, uint _nota) public onlyProfesor(msg.sender){
         //Hash de la identificacion del alumno
-        bytes32 hash_idAlumno = keccak256(bytes(_idAlumno));
+        bytes32 hash_idAlumno = keccak256(abi.encodePacked(_idAlumno));
         //Relacion entre el hash de la identificacion del alumno y su nota
         mapNotas[hash_idAlumno] = _nota;
         
