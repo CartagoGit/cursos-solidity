@@ -28,7 +28,16 @@ contract loteria {
         return _numTokens*(1 ether);
     }
     
+    //Generar mas tokens por la loteria
+    function generaTokens(uint _numTokens) public onlyOwner(){
+        token.increaseTotalSupply(_numTokens);
+    }
     
+    //Modificador para acceso solo al owner del contrato
+    modifier onlyOwner (){
+        require(owner==msg.sender, "No tienes permisos para ejecutar esta funcion.");
+        _;
+    }
     
 }
 
