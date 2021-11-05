@@ -49,12 +49,17 @@ contract votacion{
         bytes32 hash_votante = keccak256(abi.encodePacked(msg.sender));
         
         //Verificamos si el votante ya ha votado
-        for(uint i=0; i<votantes.length-1; i++){
+        for(uint i=0; i<votantes.length; i++){
             require(votantes[i]!=hash_votante, "Ya has votado. No puedes votar mas veces");
         }
         //Almacenamos el has del votante y añadimos su voto al candidato
         votantes.push(hash_votante);
         mapVotosCandidato[_candidato]++;
+    }
+    
+    // Ver la cantidad de votos que tiene un candidato
+    function getVotosCandidato(string memory _candidato) public view returns(uint){
+        return mapVotosCandidato[_candidato];
     }
     
 
