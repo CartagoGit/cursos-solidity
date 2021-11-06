@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: GPL.3.0
-pragma solidity >=0.8.0 <=0.9.0;
+pragma solidity >=0.8.0 <=0.9.0
 
 contract OMS_Covid {
     //Direccion de la OMS
@@ -35,11 +35,7 @@ contract OMS_Covid {
     }
 
     //Funcion para poder ver las solicitudes
-    function visualizeRequests()
-        public
-        view
-        onlyOMS
-        returns (address[] memory)
+    function visualizeRequests() public view onlyOMS returns (address[] memory)
     {
         return arr_requestContract;
     }
