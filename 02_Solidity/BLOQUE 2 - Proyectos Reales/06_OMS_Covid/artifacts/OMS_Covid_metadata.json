@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.8+commit.dddeac2f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"02_Solidity/BLOQUE 2 - Proyectos Reales/06_OMS_Covid/oms.sol": "OMS_Covid"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"02_Solidity/BLOQUE 2 - Proyectos Reales/06_OMS_Covid/oms.sol": {
+			"keccak256": "0x92b45fc52eb22dada9c334ae5f14694a3e1146d80679deda65cf18f236c18cf9",
+			"license": "GPL.3.0",
+			"urls": [
+				"bzz-raw://b9a24ccbe95222a92316965635b9985f2649c25bb34f3cdaa19ae14945890236",
+				"dweb:/ipfs/QmSc97jQxg5FVixFzwbVtyxiWQx6LXw7TbEnph6By3XfZb"
+			]
+		}
+	},
+	"version": 1
+}
