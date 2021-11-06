@@ -10,14 +10,14 @@ contract OMS_Covid{
     }
 
     // Mapping para relacionar los centros de salud (direccion/address) con la validez del sistema de gestion
-    mapping (address=> bool) map_validated_centers;
+    mapping (address=> bool) map_validatedCenters;
 
     //Array de direcciones que almacene los contratos de salud validados
-    address[] public contract_centers;
+    address[] public arr_contractCenters;
 
     //Eventos
-    event event_NuevoCentroValidado(address);
-    event event_NuevoContraro(address, address);
+    event event_newValidatedCenter(address);
+    event event_newContract(address, address);
 
     //Modificador que permita la ejeciucion unicamente a la ONS
     modifier onlyOMS(){
@@ -27,11 +27,28 @@ contract OMS_Covid{
 
     //Funcion para validar nuevos centros de salud que pueda autogestionarse
     function validateCenter(address _center) public onlyOMS(){
-        map_validated_centers[_center] = true;
+        map_validatedCenters[_center] = true;
+        emit event_newValidatedCenter(_center);
     }
 
     //Funcion que permita crear un contrato inteligente
+    function createContracts() public {
+        require(map_validatedCenters[msg.sender], "El centro de salud no tiene permiso para crear el contrato");
+        address addressCenterContract = address (new centerContract(msg.sender));
+        //Almacenamos la direccion del nuevo contrato en el array
+        arr_contractCenters.push(addressCenterContract);
+        //evento
+        emit event_newContract(_center, addressCenterContract);
+    }
+}
 
 
 
+// -----------------------------------------------------------------------
+contract centerContract{
+
+    address addressContract;
+    constructor(address _address){
+        addressContract = _address;
+    }
 }
