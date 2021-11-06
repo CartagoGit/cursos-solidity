@@ -38,17 +38,17 @@ contract OMS_Covid{
         //Almacenamos la direccion del nuevo contrato en el array
         arr_contractCenters.push(addressCenterContract);
         //evento
-        emit event_newContract(_center, addressCenterContract);
+        emit event_newContract(msg.sender, addressCenterContract);
     }
 }
-
-
 
 // -----------------------------------------------------------------------
 contract centerContract{
 
     address addressContract;
-    constructor(address _address){
-        addressContract = _address;
+    address addressCenter;
+    constructor(address _center){
+        addressContract = address(this);
+        addressCenter = _center;
     }
 }
