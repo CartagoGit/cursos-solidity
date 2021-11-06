@@ -35,7 +35,8 @@ interface IERC20{
     //Devuelve valor booleano con el resultado de la operacion de gasto
     function approve(address spender, uint256 amount) external returns (bool);
     
-    //Devuelve un valor booleano con el resultado de la operacion de paso de una cantidad de tokens usando el metodo allowance()
+    //Devuelve un valor booleano con el resultado de la operacion de paso de una 
+    //cantidad de tokens usando el metodo allowance()
     function transferFrom(address spender, address recipient, uint256 amount) external returns (bool);
     
     //EVENTOS-----------------------------------
@@ -56,8 +57,7 @@ contract ERC20Basic is IERC20{
     //string public constant symbol = "CN-Curso-01";
     string public constant symbol = "LoteriaTkn";
     uint8 public constant decimals = 2;
-    
-    
+       
     event eventTransfer(address indexed from, address indexed to, uint256 tokens);
     event eventApproval(address indexed owner, address indexed spender, uint256 tokens);
     
@@ -98,7 +98,9 @@ contract ERC20Basic is IERC20{
     //Para transferir tokens de un adress a otro, usamos los metodos sub y add de la libreria que importamos
     function transfer(address recipient, uint256 numTokens) public override returns (bool){
         require(numTokens <= balances[msg.sender], "No puedes transferir mas tokens de los que hay");
-        balances[msg.sender] = balances[msg.sender].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
+        //es importante el orden del a transaccion, ya que si la transaccion se corta, 
+        //es preferible a que falte a crear una inflaccion
+        balances[msg.sender] = balances[msg.sender].sub(numTokens);       
         balances[recipient] = balances[recipient].add(numTokens);
         emit eventTransfer(msg.sender, recipient, numTokens);
         return true;
@@ -106,8 +108,10 @@ contract ERC20Basic is IERC20{
     
     
     function transferUser(address user, address recipient, uint256 numTokens) public override returns (bool){
-        require(numTokens <= balances[user])"No puedes transferir mas tokens de los que hay");
-        balances[user] = balances[user].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
+        require(numTokens <= balances[user],"No puedes transferir mas tokens de los que hay");
+        //es importante el orden del a transaccion, ya que si la transaccion se corta, 
+        // preferible a que falte a crear una inflaccion
+        balances[user] = balances[user].sub(numTokens);       
         balances[recipient] = balances[recipient].add(numTokens);
         emit eventTransfer(user, recipient, numTokens);
         return true;
@@ -120,11 +124,11 @@ contract ERC20Basic is IERC20{
         return true;
     }
     
-    //Para transferir tokens con un intermediario. NO es una transferencia directa entre el poseedor y el comprador. Nosotros seriamos el intermediario.
+    //Para transferir tokens con un intermediario.
+    //NO es una transferencia directa entre el poseedor y el comprador. Nosotros seriamos el intermediario.
     function transferFrom(address owner, address buyer, uint256 numTokens) public override returns (bool){
         require(numTokens <= balances[owner]);
-        require(numTokens <= allowed[owner][msg.sender]);
-        
+        require(numTokens <= allowed[owner][msg.sender]);     
         balances[owner] = balances[owner].sub(numTokens);
         allowed[owner][msg.sender] = allowed[owner][msg.sender].sub(numTokens);
         balances[buyer]=balances[buyer].add(numTokens);
