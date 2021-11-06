@@ -27,13 +27,13 @@ contract OMS_Covid{
         require(msg.sender == owner, "Solo puede ejecutarlo la OMS");
         _;
     }
-    
+
     //Funcion para que el centro solicite un contrato
     function requestContract() public {
         arr_requestContract.push(msg.sender);
         emit event_requestContract(msg.sender);
     }
-    
+
     //Funcion para poder ver las solicitudes
     function visualizeRequests() public view onlyOMS() returns(address[] memory) {
         return arr_requestContract;

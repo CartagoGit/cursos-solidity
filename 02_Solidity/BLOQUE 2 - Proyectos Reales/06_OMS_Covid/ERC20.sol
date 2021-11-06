@@ -5,7 +5,7 @@ import "./SafeMath.sol";
 
 
 //---------------------------------------------------------------->
-//Para añadir Ethers de test en la red RINKEBY 
+//Para añadir Ethers de test en la red RINKEBY
 //https://www.rinkeby.io/#faucet
 //https://rinkeby.etherscan.io/
 //<----------------------------------------------------------------
@@ -97,7 +97,7 @@ contract ERC20Basic is IERC20{
     
     //Para transferir tokens de un adress a otro, usamos los metodos sub y add de la libreria que importamos
     function transfer(address recipient, uint256 numTokens) public override returns (bool){
-        require(numTokens <= balances[msg.sender]);
+        require(numTokens <= balances[msg.sender], "No puedes transferir mas tokens de los que hay");
         balances[msg.sender] = balances[msg.sender].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
         balances[recipient] = balances[recipient].add(numTokens);
         emit eventTransfer(msg.sender, recipient, numTokens);
@@ -106,7 +106,7 @@ contract ERC20Basic is IERC20{
     
     
     function transferUser(address user, address recipient, uint256 numTokens) public override returns (bool){
-        require(numTokens <= balances[user]);
+        require(numTokens <= balances[user])"No puedes transferir mas tokens de los que hay");
         balances[user] = balances[user].sub(numTokens); //es importante el orden del a transaccion, ya que si la transaccion se corta, es preferible a que falte a crear una inflaccion
         balances[recipient] = balances[recipient].add(numTokens);
         emit eventTransfer(user, recipient, numTokens);
