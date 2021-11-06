@@ -14,8 +14,11 @@ contract OMS_Covid{
 
     //Array de direcciones que almacene los contratos de salud validados
     address[] public arr_contractCenters;
+    //Array de solicitudes de los centros para crear un contrato para el centros
+    address[] arr_requestContract;
 
     //Eventos
+    event event_requestContract(address);
     event event_newValidatedCenter(address);
     event event_newContract(address, address);
 
@@ -23,6 +26,17 @@ contract OMS_Covid{
     modifier onlyOMS(){
         require(msg.sender == owner, "Solo puede ejecutarlo la OMS");
         _;
+    }
+    
+    //Funcion para que el centro solicite un contrato
+    function requestContract() public {
+        arr_requestContract.push(msg.sender);
+        emit event_requestContract(msg.sender);
+    }
+    
+    //Funcion para poder ver las solicitudes
+    function visualizeRequests() public view onlyOMS() returns(address[] memory) {
+        return arr_requestContract;
     }
 
     //Funcion para validar nuevos centros de salud que pueda autogestionarse
