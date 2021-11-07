@@ -74,6 +74,15 @@ contract centerContract {
         addressCenter = _center;
     }
     
+    // Map que relacione la id con un rsultado de una prueba de OMS_Covid
+    mapping (bytes32 => bool) map_covidResult; //Hash[persona] -> true/false
+    
+    //Map entre el hash y el codigo ipfs
+    mapping (bytes32 => string) map_covidIpfs;
+    
+    //Eventos
+    event event_newResult(string, bool);
+    
     modifier onlyThisCenter(){
         require(msg.sender==addressCenter, "Solo puede ser controlado por el centro de salud correspondiente");
         _;
