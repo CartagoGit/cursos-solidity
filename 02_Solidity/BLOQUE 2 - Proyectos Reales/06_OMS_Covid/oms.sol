@@ -13,7 +13,7 @@ contract OMS_Covid {
     // Mapping para relacionar los centros de salud (direccion/address) con la validez del sistema de gestion
     mapping(address => bool) public map_validatedCenters;
     //Relacionar una direccion de un Centro de Salud con su contrato
-    mapping (address=>address) public map_ContractCenter;
+    mapping (address=>address) public map_contractCenter;
     
     //Array de direcciones que almacene los contratos de salud validados
     address[] public arr_contractCenters;
@@ -57,7 +57,7 @@ contract OMS_Covid {
         //Almacenamos la direccion del nuevo contrato en el array
         arr_contractCenters.push(addressCenterContract);
         // Relacion entre el centro de salud y su contrato;
-        map_ContractCenter[msg.sender] = addressCenterContract;
+        map_contractCenter[msg.sender] = addressCenterContract;
         //evento
         emit event_newContract(msg.sender, addressCenterContract);
     }
@@ -74,17 +74,47 @@ contract centerContract {
         addressCenter = _center;
     }
     
+    /*
     // Map que relacione la id con un rsultado de una prueba de OMS_Covid
     mapping (bytes32 => bool) map_covidResult; //Hash[persona] -> true/false
     
     //Map entre el hash y el codigo ipfs
     mapping (bytes32 => string) map_covidIpfs;
+    */
+    
+    // Map para relacionar la persona con los resultados (diagnostico, codigo ipfs)
+    mapping (bytes32=> resultCovid) map_resultCovid;
+    
+    //Estructura de los resultados
+    struct resultCovid{
+        bool diagnostic;
+        string ipfsCode;
+    }
     
     //Eventos
-    event event_newResult(string, bool);
+    event event_newResult(bool, string);
     
     modifier onlyThisCenter(){
         require(msg.sender==addressCenter, "Solo puede ser controlado por el centro de salud correspondiente");
         _;
+    }
+    
+    // Funcion para emitir un resultado de una prueba covid
+    function resultPcrCovid(string memory _idPersona, bool _resultCovid, string memory _ipfsCode) public onlyThisCenter(){
+        //Hash de la identificacion de la persona
+        bytes32 hash_idPersona = keccak256 (abi.encodePacked(_idPersona));
+        
+        /*
+        //Relacion entre la persona y el resultado covid
+        map_covidResult[hash_idPersona] = _resultCovid;
+        //Relacion con codigo ipfs
+        map_covidIpfs[hash_idPersona] = _ipfsCode
+        */
+        
+        //Relacion del hash de la persona con la estructura de resultados
+        map_resultCovid[hash_idPersona] = resultCovid(_resultCovid,_ipfsCode);
+        
+        //Eventos
+        emit event_newResult(_resultCovid,_ipfsCode);
     }
 }
