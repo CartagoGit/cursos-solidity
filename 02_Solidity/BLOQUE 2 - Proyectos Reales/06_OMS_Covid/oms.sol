@@ -66,8 +66,8 @@ contract OMS_Covid {
 // -----------------------------------------------------------------------
 // Contrato autogestiobale por el centro de Salud
 contract centerContract {
-    address addressContract;
-    address addressCenter;
+    address public addressContract;
+    address public addressCenter;
 
     constructor(address _center) {
         addressContract = address(this);
@@ -116,5 +116,17 @@ contract centerContract {
         
         //Eventos
         emit event_newResult(_resultCovid,_ipfsCode);
+    }
+    
+    //Funcion que permita la visualizacion de los resultados
+    function visualizeResultsCovid(string memory _idPersona) public view returns(string memory, string memory){
+        bytes32 hash_idPersona = keccak256 (abi.encodePacked(_idPersona));
+        //Retorno de un booleano como un string
+        string memory resultTest;
+        if (map_resultCovid[hash_idPersona].diagnostic) resultTest = "Positivo";
+        else resultTest = "Negativo";
+        
+        return (resultTest, map_resultCovid[hash_idPersona].ipfsCode);
+        
     }
 }
