@@ -35,6 +35,12 @@ contract InsuranceFactory is OperacionesBasicas{
     address Insurance;
     address payable public Aseguradora;
     
-    address[] DireccionesAsegurados;
+    //Mapeos y Arrays para clientes, servicios y laboratorios
+    mapping(address => cliente) public MappingAsegurados;
+    mapping(string => servicio) public MappingServicios;
+    mapping(address => lab) public MappingLab;
     
+    address[] DireccionesAsegurados;
+    string [] private nombreServicios;
+    address [] direccionesLaboratios;
 }
