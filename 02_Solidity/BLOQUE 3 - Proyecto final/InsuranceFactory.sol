@@ -41,8 +41,8 @@ contract InsuranceFactory is OperacionesBasicas{
     mapping(address => lab) public MappingLab;
     
     address[] DireccionesAsegurados;
-    string [] private nombreServicios;
-    address [] direccionesLaboratios;
+    string [] private NombreServicios;
+    address [] DireccionesLaboratorios;
     
     //Modificadores y restricciones sobre asegurados y aseguradoras
     function FuncionUnicamenteAsegurados(address _direccionAsegurado) public view{
@@ -70,10 +70,26 @@ contract InsuranceFactory is OperacionesBasicas{
     event EventoServicioProporcionado(address, string, uint256);
     event EventoLaboratorioCreado(address, address);
     event EventoAseguradoCreado(address, address);
-    event EventoBajaCliente(address);
+    event EventoBajaAsegurado(address);
     event EventoServicioCreado(string, uint256);
     event EventoBajaServicio(string);
     
+    //Funciones 
+    function creacionLab() public{
+        DireccionesLaboratorios.push(msg.sender);
+        address direccionLab = address(new Laboratorio(msg.sender,Insurance));
+    }
     
+}
+
+contract Laboratorio is OperacionesBasicas{
+    constructor(address _addressLab, address _contractInsurance){
+        addressLab = _addressLab;
+        contractInsurance = _contractInsurance;
+        contractLab = address(this);
+    }
     
+    address addressLab;
+    address contractInsurance;
+    address contractLab;
 }
