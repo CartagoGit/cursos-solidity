@@ -90,6 +90,13 @@ contract InsuranceFactory is OperacionesBasicas{
         emit EventoAseguradoCreado(msg.sender, direccionAsegurado);
     }
     
+    function visualizarLaboratorios() public view OnlyAseguradora(msg.sender) returns (address [] memory){
+        return DireccionesLaboratorios;
+    }
+    
+    function visualizarAsegurados() public view OnlyAseguradora(msg.sender) returns (address [] memory){
+        return DireccionesAsegurados;
+    }
 }
 
 //------------------------------ Contrato IHR del asegurado
