@@ -78,21 +78,21 @@ contract InsuranceFactory is OperacionesBasicas{
     function creacionLab() public{
         DireccionesLaboratorios.push(msg.sender);
         address direccionLab = address(new Laboratorio(msg.sender,Insurance));
-        lab memory Laboratorio = lab(direccionLab, true);
-        MappingLab[msg.sender] = Laboratorio;
+        lab memory laboratorio = lab(direccionLab, true);
+        MappingLab[msg.sender] = laboratorio;
         emit EventoLaboratorioCreado(msg.sender,direccionLab);
     }
     
 }
 
 contract Laboratorio is OperacionesBasicas{
-    constructor(address _addressLab, address _contractInsurance){
+    constructor(address _addressLab, address _contractAseguradora){
         addressLab = _addressLab;
-        contractInsurance = _contractInsurance;
+        contractAseguradora = _contractAseguradora;
         contractLab = address(this);
     }
     
-    address addressLab;
-    address contractInsurance;
+    address public addressLab;
+    address contractAseguradora;
     address contractLab;
 }
