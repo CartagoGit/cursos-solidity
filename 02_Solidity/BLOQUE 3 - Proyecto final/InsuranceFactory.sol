@@ -1,4 +1,4 @@
-// SPDX-License-identifier: MIT
+// SPDX-License-Identifier: MIT
 pragma solidity >= 0.8.0 <0.8.9;
 import "./OperacionesBasicas.sol";
 import "./ERC20.Sol";
@@ -43,4 +43,27 @@ contract InsuranceFactory is OperacionesBasicas{
     address[] DireccionesAsegurados;
     string [] private nombreServicios;
     address [] direccionesLaboratios;
+    
+    function FuncionUnicamenteAsegurados(address _direccionAsegurado) public view{
+        require(MappingAsegurados[_direccionAsegurado].AutorizacionCliente, "Direccion de asegurado NO autorizada");
+    }
+    
+    //Modificadores y restricciones sobre asegurados y aseguradoras
+    modifier OnlyAsegurados(address _direccionAsegurado){
+        FuncionUnicamenteAsegurados(_direccionAsegurado);
+        _;
+    }
+    
+    modifier OnlyAseguradora(address _direccionAseguradora){
+        require(Aseguradora==_direccionAseguradora, "Direccion de Aseguradora NO Autorizada");
+        _;
+    }
+    
+    modifier OnlyAsegurado_o_Aseguradora(address _direccionAsegurado, address _direccionEntrante){
+        require( (MappingAsegurados[_direccionEntrante].AutorizacionCliente && _direccionAsegurado == _direccionEntrante) 
+            || Aseguradora == _direccionEntrante, "Solamente la aseguradora o los asegurados autorizados");
+        _;
+    }
+    
+    
 }
