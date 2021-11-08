@@ -122,6 +122,27 @@ contract InsuranceHealthRecord is OperacionesBasicas{
     }
     
     enum Estado{alta, baja}
+    
+    struct ServiciosSolicitados{
+        string nombreServicio;
+        uint256 precioServicio;
+        bool estadoServicio;
+    }
+    
+    struct ServiciosSolicitadosLab{
+        string nombreServicio;
+        uint256 precioServicio;
+        address direccionLab;
+    }
+    
+    mapping (string => ServiciosSolicitados) MappingHistorialAsegurado;
+    ServiciosSolicitadosLab[] ArrayHistorialAseguradoLab;
+    ServiciosSolicitados[] ArrayHistorialServiciosSolicitados;
+    
+    function HistorialAseguradoLaboratorio() public view returns (ServiciosSolicitadosLab[] memory){
+        return ArrayHistorialAseguradoLab;
+    }
+    
 }
 
 //---------------------------------- Contrato del Laboratorio
