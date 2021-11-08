@@ -83,8 +83,41 @@ contract InsuranceFactory is OperacionesBasicas{
         emit EventoLaboratorioCreado(msg.sender,direccionLab);
     }
     
+    function creacionContratoAsegurado() public {
+        DireccionesAsegurados.push(msg.sender);
+        address direccionAsegurado = address(new InsuranceHealthRecord(msg.sender, token, Insurance, Aseguradora));
+        MappingAsegurados[msg.sender] = cliente(msg.sender, true, direccionAsegurado);
+        emit EventoAseguradoCreado(msg.sender, direccionAsegurado);
+    }
+    
 }
 
+//------------------------------ Contrato IHR del asegurado
+contract InsuranceHealthRecord is OperacionesBasicas{
+    constructor(address _asegurado, IERC20 _token, address _seguro, address _aseguradora){
+        propietario.direccionPropietario = _asegurado;
+        propietario.saldoPropietario = 0;
+        propietario.estado = Estado.alta;
+        propietario.tokens = _token;
+        propietario.insurance = _seguro;
+        propietario.aseguradora = payable(_aseguradora);
+    }
+    
+    Owner propietario;
+    
+    struct Owner{
+        address direccionPropietario;
+        uint saldoPropietario;
+        Estado estado;
+        IERC20 tokens;
+        address insurance;
+        address payable aseguradora;
+    }
+    
+    enum Estado{alta, baja}
+}
+
+//---------------------------------- Contrato del Laboratorio
 contract Laboratorio is OperacionesBasicas{
     constructor(address _addressLab, address _contractAseguradora){
         addressLab = _addressLab;
