@@ -78,6 +78,9 @@ contract InsuranceFactory is OperacionesBasicas{
     function creacionLab() public{
         DireccionesLaboratorios.push(msg.sender);
         address direccionLab = address(new Laboratorio(msg.sender,Insurance));
+        lab memory Laboratorio = lab(direccionLab, true);
+        MappingLab[msg.sender] = Laboratorio;
+        emit EventoLaboratorioCreado(msg.sender,direccionLab);
     }
     
 }
