@@ -11,6 +11,23 @@ contract InsuranceFactory is OperacionesBasicas{
         Aseguradora = payable(msg.sender);
     }
     
+    struct cliente {
+        address DireccionCliente;
+        bool AutorizacionCliente;
+        address DireccionContrato;
+    }
+    
+    struct servicio {
+        string nombreServicio;
+        uint precioTokensServicio;
+        bool EstadoServicio;
+    }
+    
+    struct lab {
+        address direccionContratoLab;
+        bool ValidacionLab;
+    }
+    
     //Instancia del contrato token
     ERC20Basic private token;
     
