@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >= 0.8.0 <0.8.9;
+pragma solidity >= 0.4.0 <0.8.9;
 import "./OperacionesBasicas.sol";
 import "./ERC20.Sol";
 
@@ -32,7 +32,7 @@ contract InsuranceFactory is OperacionesBasicas{
     ERC20Basic private token;
     
     //Declaracion de las direcciones
-    address Insurance;
+    address public Insurance;
     address payable public Aseguradora;
     
     //Mapeos y Arrays para clientes, servicios y laboratorios
@@ -45,7 +45,7 @@ contract InsuranceFactory is OperacionesBasicas{
     address [] DireccionesLaboratorios;
     
     //Modificadores y restricciones sobre asegurados y aseguradoras
-    function FuncionUnicamenteAsegurados(address _direccionAsegurado) public view{
+    function FuncionUnicamenteAsegurados(address _direccionAsegurado) private view{
         require(MappingAsegurados[_direccionAsegurado].AutorizacionCliente, "Direccion de asegurado NO autorizada");
     }
     
@@ -110,7 +110,9 @@ contract InsuranceHealthRecord is OperacionesBasicas{
         propietario.aseguradora = payable(_aseguradora);
     }
     
-    Owner propietario;
+    Owner public propietario;
+    //InsuranceFactory public insurance = InsuranceFactory(propietario.insurance);
+    
     
     struct Owner{
         address direccionPropietario;
@@ -137,10 +139,32 @@ contract InsuranceHealthRecord is OperacionesBasicas{
     
     mapping (string => ServiciosSolicitados) MappingHistorialAsegurado;
     ServiciosSolicitadosLab[] ArrayHistorialAseguradoLab;
-    ServiciosSolicitados[] ArrayHistorialServiciosSolicitados;
+    //ServiciosSolicitados[] ArrayHistorialServiciosSolicitados;
+    
+    modifier OnlyAsegurado_o_Aseguradora(address _direccionAsegurado, address _direccionConsultor){
+        //propietario.insurance.call(abi.encode(keccak256("OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor)")));
+        require( (_direccionAsegurado == msg.sender) 
+            || propietario.aseguradora == _direccionConsultor, "Solamente la aseguradora o los asegurados autorizados");
+        _;
+    }
     
     function HistorialAseguradoLaboratorio() public view returns (ServiciosSolicitadosLab[] memory){
         return ArrayHistorialAseguradoLab;
+    }
+    
+    function HistorialAsegurado(string memory _servicio) public view returns(string memory nombreServicio, uint256 precioServicio){
+        return (MappingHistorialAsegurado[_servicio].nombreServicio, MappingHistorialAsegurado[_servicio].precioServicio);
+    }
+    
+    function ServicioEstadoAsegurado(string memory _servicio) public view returns(bool){
+        return MappingHistorialAsegurado[_servicio].estadoServicio;
+    }
+    
+   function consultarHistorialAsegurado(address _direccionAsegurado, address _direccionConsultor) public view OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor) returns (string memory)
+    {
+        string memory historial = "";
+        
+        return historial;
     }
     
 }
