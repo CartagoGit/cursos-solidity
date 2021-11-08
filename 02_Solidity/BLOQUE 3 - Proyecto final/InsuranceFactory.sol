@@ -44,11 +44,11 @@ contract InsuranceFactory is OperacionesBasicas{
     string [] private nombreServicios;
     address [] direccionesLaboratios;
     
+    //Modificadores y restricciones sobre asegurados y aseguradoras
     function FuncionUnicamenteAsegurados(address _direccionAsegurado) public view{
         require(MappingAsegurados[_direccionAsegurado].AutorizacionCliente, "Direccion de asegurado NO autorizada");
     }
     
-    //Modificadores y restricciones sobre asegurados y aseguradoras
     modifier OnlyAsegurados(address _direccionAsegurado){
         FuncionUnicamenteAsegurados(_direccionAsegurado);
         _;
@@ -64,6 +64,16 @@ contract InsuranceFactory is OperacionesBasicas{
             || Aseguradora == _direccionEntrante, "Solamente la aseguradora o los asegurados autorizados");
         _;
     }
+    
+    // Eventos 
+    event EventoComprado(uint256);
+    event EventoServicioProporcionado(address, string, uint256);
+    event EventoLaboratorioCreado(address, address);
+    event EventoAseguradoCreado(address, address);
+    event EventoBajaCliente(address);
+    event EventoServicioCreado(string, uint256);
+    event EventoBajaServicio(string);
+    
     
     
 }
