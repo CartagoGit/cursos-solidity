@@ -101,7 +101,16 @@ contract InsuranceFactory is OperacionesBasicas{
     function consultarHistorialAsegurado(address _direccionAsegurado, address _direccionConsultor) public view OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor) returns (string memory)
     {
         string memory historial = "";
+        address direccionContratoAsegurado = MappingAsegurados[_direccionAsegurado].DireccionContrato;
         
+        for (uint i=0; i< NombreServicios.length; i++){
+            if(MappingServicios[NombreServicios[i]].EstadoServicio &&
+                InsuranceHealthRecord(direccionContratoAsegurado).ServicioEstadoAsegurado(NombreServicios[i])
+                ){
+                    (string memory nombreServicio, uint precioServicio) = InsuranceHealthRecord(direccionContratoAsegurado).HistorialAsegurado(NombreServicios[i]);
+                    historial = string(abi.encodePacked(historial, "(", nombreServicio, ", ", uint2str(precioServicio), ") --- "));
+                }
+        }
         return historial;
     }
 }
@@ -153,7 +162,7 @@ contract InsuranceHealthRecord is OperacionesBasicas{
         return ArrayHistorialAseguradoLab;
     }
     
-    function HistorialAsegurado(string memory _servicio) public view returns(string memory nombreServicio, uint256 precioServicio){
+    function HistorialAsegurado(string memory _servicio) public view returns(string memory nombreServicio, uint precioServicio){
         return (MappingHistorialAsegurado[_servicio].nombreServicio, MappingHistorialAsegurado[_servicio].precioServicio);
     }
     
