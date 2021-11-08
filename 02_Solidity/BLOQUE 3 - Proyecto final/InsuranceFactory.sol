@@ -97,6 +97,13 @@ contract InsuranceFactory is OperacionesBasicas{
     function visualizarAsegurados() public view OnlyAseguradora(msg.sender) returns (address [] memory){
         return DireccionesAsegurados;
     }
+    
+    function consultarHistorialAsegurado(address _direccionAsegurado, address _direccionConsultor) public view OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor) returns (string memory)
+    {
+        string memory historial = "";
+        
+        return historial;
+    }
 }
 
 //------------------------------ Contrato IHR del asegurado
@@ -140,13 +147,7 @@ contract InsuranceHealthRecord is OperacionesBasicas{
     mapping (string => ServiciosSolicitados) MappingHistorialAsegurado;
     ServiciosSolicitadosLab[] ArrayHistorialAseguradoLab;
     //ServiciosSolicitados[] ArrayHistorialServiciosSolicitados;
-    
-    modifier OnlyAsegurado_o_Aseguradora(address _direccionAsegurado, address _direccionConsultor){
-        //propietario.insurance.call(abi.encode(keccak256("OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor)")));
-        require( (_direccionAsegurado == msg.sender) 
-            || propietario.aseguradora == _direccionConsultor, "Solamente la aseguradora o los asegurados autorizados");
-        _;
-    }
+  
     
     function HistorialAseguradoLaboratorio() public view returns (ServiciosSolicitadosLab[] memory){
         return ArrayHistorialAseguradoLab;
@@ -160,12 +161,7 @@ contract InsuranceHealthRecord is OperacionesBasicas{
         return MappingHistorialAsegurado[_servicio].estadoServicio;
     }
     
-   function consultarHistorialAsegurado(address _direccionAsegurado, address _direccionConsultor) public view OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor) returns (string memory)
-    {
-        string memory historial = "";
-        
-        return historial;
-    }
+   
     
 }
 
