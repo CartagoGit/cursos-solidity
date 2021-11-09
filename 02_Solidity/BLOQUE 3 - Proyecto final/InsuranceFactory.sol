@@ -221,6 +221,8 @@ contract InsuranceHealthRecord is OperacionesBasicas{
   
     event EventoSelfDestruct(address);
     event EventoDevolverTokens(address, uint256);
+    event EventoServicioPagado(address, string, uint256);
+    event EventoPeticionServicioLab(address, address, string);
     
     modifier OnlyOwner(address _direccion){
         require(_direccion == propietario.direccionPropietario, "No eres el asegurado de la poliza");
@@ -265,6 +267,24 @@ contract InsuranceHealthRecord is OperacionesBasicas{
         emit EventoDevolverTokens(msg.sender, _numTokens);
     }
     
+    function peticionServicio(string memory _servicio) public OnlyOwner(msg.sender){
+        require(InsuranceFactory(propietario.insurance).ServicioEstado(_servicio), "El servicio no esta activo en la aseguradora");
+        uint256 pagoTokens = InsuranceFactory(propietario.insurance).getPrecioServicio(_servicio);
+        require(pagoTokens<=balanceOf(), "Necesitas comprar mas tokens para optar a este servicio");
+        propietario.tokens.transfer(propietario.aseguradora, pagoTokens);
+        MappingHistorialAsegurado[_servicio] = ServiciosSolicitados(_servicio, pagoTokens, true);
+        emit EventoServicioPagado(msg.sender, _servicio, pagoTokens);
+    }
+    
+    function peticionServicioLab(address _direccionLab, string memory _servicio) public payable OnlyOwner(msg.sender){
+        Laboratorio contratoLab = Laboratorio(_direccionLab);
+        require (msg.value == contratoLab.ConsultarPrecioServicios(_servicio)* 1 ether, "Operacion invalida");
+        contratoLab.DarServicio(msg.sender, _servicio);
+        payable(contratoLab.addressLab()).transfer(contratoLab.ConsultarPrecioServicios(_servicio)*1 ether);
+        ArrayHistorialAseguradoLab.push(ServiciosSolicitadosLab(_servicio, contratoLab.ConsultarPrecioServicios(_servicio), _direccionLab));
+        emit EventoPeticionServicioLab(_direccionLab, msg.sender, _servicio);
+    }
+    
 }
 
 //---------------------------------- Contrato del Laboratorio
@@ -278,4 +298,13 @@ contract Laboratorio is OperacionesBasicas{
     address public addressLab;
     address contractAseguradora;
     address contractLab;
+    
+    //TODO:
+    function ConsultarPrecioServicios(string memory _servicio) public view returns (uint){
+        return 0;
+    }
+    //TODO:
+    function DarServicio(address _direccionAsegurado, string memory _servicio) public {
+        
+    } 
 }
