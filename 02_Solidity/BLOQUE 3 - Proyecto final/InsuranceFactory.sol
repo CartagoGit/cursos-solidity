@@ -145,7 +145,7 @@ contract InsuranceFactory is OperacionesBasicas{
     }
     
     //COMPRA DE TOKENS ----------------------------------
-    function compratoken(address _asegurado, uint _numTokens) public payable OnlyAsegurados(_asegurado){
+    function compraTokens(address _asegurado, uint _numTokens) public payable OnlyAsegurados(_asegurado){
         uint256 Balance = balanceOf();
         require(_numTokens<=Balance, "No hay tantos tokens para comprar, compra un numero inferior");
         require(_numTokens>0,"Compra un numero positivo de tokens");
@@ -220,6 +220,7 @@ contract InsuranceHealthRecord is OperacionesBasicas{
     //ServiciosSolicitados[] ArrayHistorialServiciosSolicitados;
   
     event EventoSelfDestruct(address);
+    event EventoDevolverTokens(address, uint256);
     
     modifier OnlyOwner(address _direccion){
         require(_direccion == propietario.direccionPropietario, "No eres el asegurado de la poliza");
@@ -238,10 +239,31 @@ contract InsuranceHealthRecord is OperacionesBasicas{
         return MappingHistorialAsegurado[_servicio].estadoServicio;
     }
     
-   function darBaja() public OnlyOwner(msg.sender){
-       emit EventoSelfDestruct(msg.sender);
-       selfdestruct(payable(msg.sender));
-   }
+    function darBaja() public OnlyOwner(msg.sender){
+        emit EventoSelfDestruct(msg.sender);
+        selfdestruct(payable(msg.sender));
+    }
+    
+    function CompraTokens (uint _numTokens) payable public OnlyOwner(msg.sender){
+        require(_numTokens>0, "Necesitas comprar un numero positivo de tokens.");
+        uint coste = calcularPrecioTokens(_numTokens);
+        require(msg.value >= coste, "Se necesitan mas ethers para realizar la compra");
+        uint returnValue = msg.value - coste;
+        payable(msg.sender).transfer(returnValue);
+        InsuranceFactory(propietario.insurance).compraTokens(msg.sender, _numTokens);
+    }
+    
+    function balanceOf() public view OnlyOwner(msg.sender) returns (uint256 _blance){
+        return (propietario.tokens.balanceOf(address(this)));
+    }
+    
+    function devolverTokens(uint _numTokens) public payable OnlyOwner(msg.sender){
+        require(_numTokens>0, "Necesitas devolver un numero positivo de tokens");
+        require(_numTokens<=balanceOf(), "No tienes los tokens que deseas devolver");
+        propietario.tokens.transfer(propietario.aseguradora, _numTokens);
+        payable(msg.sender).transfer(calcularPrecioTokens(_numTokens));
+        emit EventoDevolverTokens(msg.sender, _numTokens);
+    }
     
 }
 
