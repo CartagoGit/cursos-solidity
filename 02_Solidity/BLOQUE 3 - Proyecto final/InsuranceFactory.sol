@@ -75,23 +75,13 @@ contract InsuranceFactory is OperacionesBasicas{
     event EventoBajaServicio(string);
     
     //Funciones 
-    function creacionLab() public{
-        DireccionesLaboratorios.push(msg.sender);
-        address direccionLab = address(new Laboratorio(msg.sender,Insurance));
-        lab memory laboratorio = lab(direccionLab, true);
-        MappingLab[msg.sender] = laboratorio;
-        emit EventoLaboratorioCreado(msg.sender,direccionLab);
-    }
     
+    // CLIENTE --------------------------------
     function creacionContratoAsegurado() public {
         DireccionesAsegurados.push(msg.sender);
         address direccionAsegurado = address(new InsuranceHealthRecord(msg.sender, token, Insurance, Aseguradora));
         MappingAsegurados[msg.sender] = cliente(msg.sender, true, direccionAsegurado);
         emit EventoAseguradoCreado(msg.sender, direccionAsegurado);
-    }
-    
-    function visualizarLaboratorios() public view OnlyAseguradora(msg.sender) returns (address [] memory){
-        return DireccionesLaboratorios;
     }
     
     function visualizarAsegurados() public view OnlyAseguradora(msg.sender) returns (address [] memory){
@@ -119,6 +109,7 @@ contract InsuranceFactory is OperacionesBasicas{
         emit EventoBajaAsegurado(_direccionAsegurado);
     }
     
+    //SERVICIOS --------------------------------
     function nuevoServicio(string memory _nombreServicio, uint256 _precioServicio) public OnlyAseguradora(msg.sender){
         MappingServicios[_nombreServicio] = servicio(_nombreServicio, _precioServicio, true);
         NombreServicios.push(_nombreServicio);
@@ -151,6 +142,37 @@ contract InsuranceFactory is OperacionesBasicas{
         }
         return ServiciosActivos;
         
+    }
+    
+    //COMPRA DE TOKENS ----------------------------------
+    function compratoken(address _asegurado, uint _numTokens) public payable OnlyAsegurados(_asegurado){
+        uint256 Balance = balanceOf();
+        require(_numTokens<=Balance, "No hay tantos tokens para comprar, compra un numero inferior");
+        require(_numTokens>0,"Compra un numero positivo de tokens");
+        
+        token.transfer(msg.sender, _numTokens);
+        emit EventoComprado(_numTokens);
+    }
+    
+    function balanceOf() public view returns (uint256 tokens){
+        return (token.balanceOf(Insurance));
+    }
+    
+    function generaTokens(uint _numTokens) public OnlyAseguradora(msg.sender){
+        token.increaseTotalSupply(_numTokens);
+    }
+    
+    //LABORATORIO ----------------------------------
+    function creacionLab() public{
+        DireccionesLaboratorios.push(msg.sender);
+        address direccionLab = address(new Laboratorio(msg.sender,Insurance));
+        lab memory laboratorio = lab(direccionLab, true);
+        MappingLab[msg.sender] = laboratorio;
+        emit EventoLaboratorioCreado(msg.sender,direccionLab);
+    }
+    
+    function visualizarLaboratorios() public view OnlyAseguradora(msg.sender) returns (address [] memory){
+        return DireccionesLaboratorios;
     }
     
 }
