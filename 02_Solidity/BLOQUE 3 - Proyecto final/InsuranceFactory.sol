@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >= 0.4.0 <0.8.9;
+pragma solidity >= 0.8.0 <0.8.9;
 import "./OperacionesBasicas.sol";
 import "./ERC20.Sol";
 
-//Contrato para la compañia de seguros
+//------------------------------ Contrato para la compañia de seguros
 contract InsuranceFactory is OperacionesBasicas{
     constructor () {
         token = new ERC20Basic(100);
@@ -295,12 +295,41 @@ contract Laboratorio is OperacionesBasicas{
         contractLab = address(this);
     }
     
+    struct ResultadoServicio {
+        string diagnostico_servicio;
+        string codigo_IPFS;
+    }
+    
+    struct ServiciosLab{
+        string nombreServicio;
+        uint precio;
+        bool enFuncionamiento;
+    }
+    
+    
+    
+    mapping(address => string) public MappingServiciosSolicitados;
+    mapping (address => ResultadoServicio) MappingResultadosServiciosLab;
+    mapping (string => ServiciosLab) public MappingServiciosLab;
+    address [] public arr_peticionesServicios;
+    string [] arr_nombreServiciosLab;
+    
+
     address public addressLab;
     address contractAseguradora;
     address contractLab;
     
+    event EventoServicioFuncionando(string, uint);
+    event EventoDarServicio(address, string);
+    
+    modifier OnlyLab(address _direccion){
+        require(_direccion == addressLab, "Solo el laboratorio asignado puede ejecutar esta funcion");
+        _;
+    }
+    
     //TODO:
     function ConsultarPrecioServicios(string memory _servicio) public view returns (uint){
+        
         return 0;
     }
     //TODO:
