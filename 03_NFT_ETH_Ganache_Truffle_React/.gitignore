@@ -1,0 +1,2 @@
+## Ignorar todos los archivos log
+log_ganache/*.log
