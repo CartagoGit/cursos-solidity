@@ -113,6 +113,13 @@ contract InsuranceFactory is OperacionesBasicas{
         }
         return historial;
     }
+    
+    function darBajaCliente(address _direccionAsegurado) public OnlyAseguradora(msg.sender){
+        MappingAsegurados[_direccionAsegurado].AutorizacionCliente = false;
+        InsuranceHealthRecord(MappingAsegurados[_direccionAsegurado].DireccionContrato).darBaja;
+        emit EventoBajaAsegurado(_direccionAsegurado);
+    }
+    
 }
 
 //------------------------------ Contrato IHR del asegurado
@@ -157,6 +164,12 @@ contract InsuranceHealthRecord is OperacionesBasicas{
     ServiciosSolicitadosLab[] ArrayHistorialAseguradoLab;
     //ServiciosSolicitados[] ArrayHistorialServiciosSolicitados;
   
+    event EventoSelfDestruct(address);
+    
+    modifier OnlyOwner(address _direccion){
+        require(_direccion == propietario.direccionPropietario, "No eres el asegurado de la poliza");
+        _;
+    }
     
     function HistorialAseguradoLaboratorio() public view returns (ServiciosSolicitadosLab[] memory){
         return ArrayHistorialAseguradoLab;
@@ -170,7 +183,10 @@ contract InsuranceHealthRecord is OperacionesBasicas{
         return MappingHistorialAsegurado[_servicio].estadoServicio;
     }
     
-   
+   function darBaja() public OnlyOwner(msg.sender){
+       emit EventoSelfDestruct(msg.sender);
+       selfdestruct(payable(msg.sender));
+   }
     
 }
 
