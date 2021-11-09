@@ -324,6 +324,12 @@ contract Laboratorio is OperacionesBasicas{
         _;
     }
     
+    function NuevoServicioLab(string memory _servicio, uint _precio) public OnlyLab(msg.sender){
+        MappingServiciosLab[_servicio] = ServiciosLab(_servicio, _precio, true);
+        arr_nombreServiciosLab.push(_servicio);
+        emit EventoServicioFuncionando(_servicio, _precio);
+    }
+    
     function consultarServicios() public view returns (string[] memory){
         return arr_nombreServiciosLab;
     }
