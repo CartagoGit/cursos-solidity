@@ -98,8 +98,7 @@ contract InsuranceFactory is OperacionesBasicas{
         return DireccionesAsegurados;
     }
     
-    function consultarHistorialAsegurado(address _direccionAsegurado, address _direccionConsultor) public view OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor) returns (string memory)
-    {
+    function consultarHistorialAsegurado(address _direccionAsegurado, address _direccionConsultor) public view OnlyAsegurado_o_Aseguradora(_direccionAsegurado, _direccionConsultor) returns (string memory){
         string memory historial = "";
         address direccionContratoAsegurado = MappingAsegurados[_direccionAsegurado].DireccionContrato;
         
@@ -118,6 +117,27 @@ contract InsuranceFactory is OperacionesBasicas{
         MappingAsegurados[_direccionAsegurado].AutorizacionCliente = false;
         InsuranceHealthRecord(MappingAsegurados[_direccionAsegurado].DireccionContrato).darBaja;
         emit EventoBajaAsegurado(_direccionAsegurado);
+    }
+    
+    function nuevoServicio(string memory _nombreServicio, uint256 _precioServicio) public OnlyAseguradora(msg.sender){
+        MappingServicios[_nombreServicio] = servicio(_nombreServicio, _precioServicio, true);
+        NombreServicios.push(_nombreServicio);
+        emit EventoServicioCreado(_nombreServicio,_precioServicio);
+    }
+    
+    function darBajaServicio(string memory _nombreServicio) public OnlyAseguradora(msg.sender){
+        require(ServicioEstado(_nombreServicio), "No se ha dado de alta el servicio");
+        MappingServicios[_nombreServicio].EstadoServicio = false;
+        emit EventoBajaServicio(_nombreServicio);
+    }
+    
+    function ServicioEstado(string memory _nombreServicio) public view returns (bool){
+        return MappingServicios[_nombreServicio].EstadoServicio;
+    }
+    
+    function getPrecioServicio(string memory _nombreServicio) public view returns(uint256 tokens){
+        require(ServicioEstado(_nombreServicio), "El servicio no esta disponible");
+        return MappingServicios[_nombreServicio].precioTokensServicio;
     }
     
 }
