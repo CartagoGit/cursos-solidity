@@ -45,7 +45,7 @@ contract InsuranceFactory is OperacionesBasicas{
     address [] DireccionesLaboratorios;
     
     //Modificadores y restricciones sobre asegurados y aseguradoras
-    function FuncionUnicamenteAsegurados(address _direccionAsegurado) private view{
+    function FuncionUnicamenteAsegurados (address _direccionAsegurado) public view{
         require(MappingAsegurados[_direccionAsegurado].AutorizacionCliente, "Direccion de asegurado NO autorizada");
     }
     
@@ -306,15 +306,12 @@ contract Laboratorio is OperacionesBasicas{
         bool enFuncionamiento;
     }
     
-    
-    
     mapping(address => string) public MappingServiciosSolicitados;
     mapping (address => ResultadoServicio) MappingResultadosServiciosLab;
     mapping (string => ServiciosLab) public MappingServiciosLab;
     address [] public arr_peticionesServicios;
     string [] arr_nombreServiciosLab;
     
-
     address public addressLab;
     address contractAseguradora;
     address contractLab;
@@ -327,13 +324,20 @@ contract Laboratorio is OperacionesBasicas{
         _;
     }
     
-    //TODO:
-    function ConsultarPrecioServicios(string memory _servicio) public view returns (uint){
-        
-        return 0;
+    function consultarServicios() public view returns (string[] memory){
+        return arr_nombreServiciosLab;
     }
-    //TODO:
+    
+    function ConsultarPrecioServicios(string memory _servicio) public view returns (uint){
+        return MappingServiciosLab[_servicio].precio;
+    }
+    
     function DarServicio(address _direccionAsegurado, string memory _servicio) public {
-        
+        InsuranceFactory IF = InsuranceFactory(contractAseguradora);
+        IF.FuncionUnicamenteAsegurados(_direccionAsegurado);
+        require(MappingServiciosLab[_servicio].enFuncionamiento, "El servicio no esta en funcionamiento");
+        MappingServiciosSolicitados[_direccionAsegurado] = _servicio;
+        arr_peticionesServicios.push(_direccionAsegurado);
+        emit EventoDarServicio(_direccionAsegurado, _servicio);
     } 
 }
