@@ -14,3 +14,8 @@
 https://github.com/joaneeet7/DApp
 
 y en el recurso zip dentro de la carpeta recursos
+
+## Recursos Ganache
+
+Ganache-Cli:
+https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/
