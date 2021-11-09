@@ -140,6 +140,19 @@ contract InsuranceFactory is OperacionesBasicas{
         return MappingServicios[_nombreServicio].precioTokensServicio;
     }
     
+    function ConsultarServiciosActivos() public view returns (string[] memory){
+        string [] memory ServiciosActivos = new string [](NombreServicios.length);
+        uint contador = 0;
+        for (uint i=0; i<NombreServicios.length; i++){
+            if(ServicioEstado(NombreServicios[i])) {
+                ServiciosActivos[contador] = NombreServicios[i];
+                contador ++;
+            }
+        }
+        return ServiciosActivos;
+        
+    }
+    
 }
 
 //------------------------------ Contrato IHR del asegurado
