@@ -1,2 +1,2 @@
 ## Ignorar todos los archivos log
-log_ganache/*.log
+logs_ganache/*.log
