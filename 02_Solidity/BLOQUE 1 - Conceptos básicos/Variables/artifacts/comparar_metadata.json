@@ -1,0 +1,60 @@
+{
+	"compiler": {
+		"version": "0.4.26+commit.4563c3fc"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "a",
+						"type": "string"
+					},
+					{
+						"name": "b",
+						"type": "string"
+					}
+				],
+				"name": "compareStrings",
+				"outputs": [
+					{
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"02_Solidity/BLOQUE 1 - Conceptos básicos/Variables/comparar_strings.sol": "comparar"
+		},
+		"evmVersion": "byzantium",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"02_Solidity/BLOQUE 1 - Conceptos básicos/Variables/comparar_strings.sol": {
+			"keccak256": "0x49de37e5767acaa97e8b6cc8884fd8c8ea409e3cb1efc56612b384345583859a",
+			"urls": [
+				"bzzr://7c4c3edae3dc3f5deabb59defec959e9040a35039dc7545ca0b64ea755bbc058"
+			]
+		}
+	},
+	"version": 1
+}
