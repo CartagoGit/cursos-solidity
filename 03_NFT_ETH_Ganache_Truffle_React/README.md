@@ -24,3 +24,4 @@ https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/
 
 https://www.trufflesuite.com/docs/truffle/overview
 
+Instalamos truffle desde node y la usamos truffle init para inicializar desde la carpeta del proyecto
