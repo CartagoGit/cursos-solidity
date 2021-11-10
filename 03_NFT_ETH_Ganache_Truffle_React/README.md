@@ -19,3 +19,8 @@ y en el recurso zip dentro de la carpeta recursos
 
 Ganache-Cli:
 https://docs.nethereum.com/en/latest/ethereum-and-clients/ganache-cli/
+
+## Recursos Truffle
+
+https://www.trufflesuite.com/docs/truffle/overview
+
