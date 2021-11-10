@@ -6,6 +6,7 @@ contract contractNotas{
     
     // Direccion del profesor
     address public profesor;
+    string my_string = "Joan";
     
     // Constructor
     constructor(){
