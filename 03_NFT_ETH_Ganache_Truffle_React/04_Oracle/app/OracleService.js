@@ -4,7 +4,7 @@ const Tx = require('ethereumjs-tx');
 const fetch = require('node-fetch');
 
 //Llamadas a los archivos json
-import contractJson from '../build/contracts/Oracle.json';
+const contractJson = require('../build/contracts/Oracle.json');
 
 //instancia de web3
 const web3 = new Web3('ws://127.0.0.1:7545');
