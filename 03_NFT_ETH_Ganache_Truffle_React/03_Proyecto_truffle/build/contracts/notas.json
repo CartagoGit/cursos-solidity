@@ -49,7 +49,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -86,7 +87,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -112,7 +114,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"event_alumno_evaluado\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"name\":\"event_revision\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_idAlumno\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_nota\",\"type\":\"uint256\"}],\"name\":\"evaluar\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_idAlumno\",\"type\":\"string\"}],\"name\":\"getNotas\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getRevisiones\",\"outputs\":[{\"internalType\":\"string[]\",\"name\":\"\",\"type\":\"string[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"profesor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_idAlumno\",\"type\":\"string\"}],\"name\":\"revisionNota\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/notas.sol\":\"notas\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/notas.sol\":{\"keccak256\":\"0x5a0b3c35e517bfc04e50f3c877b301122682385f0ed882c2b30678d89ec37360\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://de6ae539003450f641d91d0f2f47cad90e49deeaaff4c77c50906113da9d34f0\",\"dweb:/ipfs/QmSq54Qiyu1i41TUWg84MaLavjAG2W3ipAV7xFiMqbqqJZ\"]}},\"version\":1}",
@@ -9512,9 +9515,17 @@
     "name": "solc",
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x4E85b73f0b464b14ca6Aa50679d5064a3A083D99",
+      "transactionHash": "0x7f753ccb79e0e3e23a303a6d7449ee09723be72aeae358bf6b0d9a6f37ec27eb"
+    }
+  },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-11T00:17:39.683Z",
+  "updatedAt": "2021-11-11T01:01:21.581Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},

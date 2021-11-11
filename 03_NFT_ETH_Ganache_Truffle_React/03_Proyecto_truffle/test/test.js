@@ -1,5 +1,5 @@
 //Llamada al contrato
-const notas = artifacts.require("contractNotas");
+const notas = artifacts.require("notas");
 
 contract("notas", (accounts) => {
     var insertarNota = 9;
