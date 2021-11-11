@@ -8,4 +8,21 @@ contract Oracle {
   }
 
   address owner;
+  uint public numAsteroids;
+
+  modifier onlyOwner(){
+    require(msg.sender == owner, "Only Owner");
+    _;
+  }
+  // Evento que reciba datos del oraculo
+  event __callbackNewData();
+
+  function update() public onlyOwner{
+    emit __callbackNewData();
+  }
+
+  function setManualNumAsteroids(uint _num) public onlyOwner{
+    numAsteroids = _num;
+    
+  }
 }

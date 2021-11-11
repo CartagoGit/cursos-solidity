@@ -37,3 +37,8 @@ truffle migration --reset
 
 ##### Una vez sale correcto, ya podemos empezar a usar la consola con "truffle console"
 global = this 
+
+## Oracle
+
+### Dependencias para la app
+npm i web3 ethereumjs-tx node-fetch
