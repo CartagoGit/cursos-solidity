@@ -41,15 +41,15 @@
           "type": "uint256"
         }
       ],
-      "name": "setManualNumAsteroids",
+      "name": "setNumAsteroids",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"__callbackNewData\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"numAsteroids\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_num\",\"type\":\"uint256\"}],\"name\":\"setManualNumAsteroids\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"update\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle.sol\":\"Oracle\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle.sol\":{\"keccak256\":\"0x79de62cf638aed2987e60a9a9649e61dc13a13fee8203010cbbf81cea5d5b890\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5093d43d1e4ac4ad085a364ba415584dbf433ffa628916941066a5a21055cc62\",\"dweb:/ipfs/Qmd2L7xLWZRQLZJsiPcXCF6u7vG59EVvTDh4YaeWDE19J2\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610329806100606000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063072c2d2b14610046578063a2e6204514610062578063e1a74b951461006c575b600080fd5b610060600480360381019061005b919061021f565b61008a565b005b61006a610122565b005b6100746101de565b604051610081919061025b565b60405180910390f35b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610118576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161010f906102d3565b60405180910390fd5b8060018190555050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146101b0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016101a7906102d3565b60405180910390fd5b7f2bfb84d8e96bf2a06daf6ebca52197c6c24fcd7c9c9c1f434c3bc9e59a92f1c160405160405180910390a1565b60015481565b600080fd5b6000819050919050565b6101fc816101e9565b811461020757600080fd5b50565b600081359050610219816101f3565b92915050565b600060208284031215610235576102346101e4565b5b60006102438482850161020a565b91505092915050565b610255816101e9565b82525050565b6000602082019050610270600083018461024c565b92915050565b600082825260208201905092915050565b7f4f6e6c79204f776e657200000000000000000000000000000000000000000000600082015250565b60006102bd600a83610276565b91506102c882610287565b602082019050919050565b600060208201905081810360008301526102ec816102b0565b905091905056fea2646970667358221220bf0a96c50391f1371eb6623c0233150cfbf59f3625e1e8d58cbf43a4cd5a303464736f6c63430008090033",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c8063072c2d2b14610046578063a2e6204514610062578063e1a74b951461006c575b600080fd5b610060600480360381019061005b919061021f565b61008a565b005b61006a610122565b005b6100746101de565b604051610081919061025b565b60405180910390f35b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610118576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161010f906102d3565b60405180910390fd5b8060018190555050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146101b0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016101a7906102d3565b60405180910390fd5b7f2bfb84d8e96bf2a06daf6ebca52197c6c24fcd7c9c9c1f434c3bc9e59a92f1c160405160405180910390a1565b60015481565b600080fd5b6000819050919050565b6101fc816101e9565b811461020757600080fd5b50565b600081359050610219816101f3565b92915050565b600060208284031215610235576102346101e4565b5b60006102438482850161020a565b91505092915050565b610255816101e9565b82525050565b6000602082019050610270600083018461024c565b92915050565b600082825260208201905092915050565b7f4f6e6c79204f776e657200000000000000000000000000000000000000000000600082015250565b60006102bd600a83610276565b91506102c882610287565b602082019050919050565b600060208201905081810360008301526102ec816102b0565b905091905056fea2646970667358221220bf0a96c50391f1371eb6623c0233150cfbf59f3625e1e8d58cbf43a4cd5a303464736f6c63430008090033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[],\"name\":\"__callbackNewData\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"numAsteroids\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_num\",\"type\":\"uint256\"}],\"name\":\"setNumAsteroids\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"update\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/oracle.sol\":\"Oracle\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/oracle.sol\":{\"keccak256\":\"0xc365d80683f139e9f1168ead736d544884764d5db54d6bd8da88247e9265521b\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d7bc7df2b3f36c144c34252b775206a89aa1cf8f4a354aabdad938401238e5f1\",\"dweb:/ipfs/QmNZ818L79vsVZUwMsPQkirfGCyKJbK3NYz3MHKKd1MRby\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610329806100606000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c806301d05e9d14610046578063a2e6204514610062578063e1a74b951461006c575b600080fd5b610060600480360381019061005b919061021f565b61008a565b005b61006a610122565b005b6100746101de565b604051610081919061025b565b60405180910390f35b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610118576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161010f906102d3565b60405180910390fd5b8060018190555050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146101b0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016101a7906102d3565b60405180910390fd5b7f2bfb84d8e96bf2a06daf6ebca52197c6c24fcd7c9c9c1f434c3bc9e59a92f1c160405160405180910390a1565b60015481565b600080fd5b6000819050919050565b6101fc816101e9565b811461020757600080fd5b50565b600081359050610219816101f3565b92915050565b600060208284031215610235576102346101e4565b5b60006102438482850161020a565b91505092915050565b610255816101e9565b82525050565b6000602082019050610270600083018461024c565b92915050565b600082825260208201905092915050565b7f4f6e6c79204f776e657200000000000000000000000000000000000000000000600082015250565b60006102bd600a83610276565b91506102c882610287565b602082019050919050565b600060208201905081810360008301526102ec816102b0565b905091905056fea26469706673582212207cfd5fb62614f5ea9e2c6b4e5e0656d6c669b408078883a991f66aa8d35751ab64736f6c63430008090033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c806301d05e9d14610046578063a2e6204514610062578063e1a74b951461006c575b600080fd5b610060600480360381019061005b919061021f565b61008a565b005b61006a610122565b005b6100746101de565b604051610081919061025b565b60405180910390f35b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610118576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040161010f906102d3565b60405180910390fd5b8060018190555050565b60008054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146101b0576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004016101a7906102d3565b60405180910390fd5b7f2bfb84d8e96bf2a06daf6ebca52197c6c24fcd7c9c9c1f434c3bc9e59a92f1c160405160405180910390a1565b60015481565b600080fd5b6000819050919050565b6101fc816101e9565b811461020757600080fd5b50565b600081359050610219816101f3565b92915050565b600060208284031215610235576102346101e4565b5b60006102438482850161020a565b91505092915050565b610255816101e9565b82525050565b6000602082019050610270600083018461024c565b92915050565b600082825260208201905092915050565b7f4f6e6c79204f776e657200000000000000000000000000000000000000000000600082015250565b60006102bd600a83610276565b91506102c882610287565b602082019050919050565b600060208201905081810360008301526102ec816102b0565b905091905056fea26469706673582212207cfd5fb62614f5ea9e2c6b4e5e0656d6c669b408078883a991f66aa8d35751ab64736f6c63430008090033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [
@@ -1177,9 +1177,9 @@
       "name": "#utility.yul"
     }
   ],
-  "sourceMap": "185:431:1:-:0;;;205:43;;;;;;;;;;233:10;225:5;;:18;;;;;;;;;;;;;;;;;;185:431;;;;;;",
-  "deployedSourceMap": "185:431:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;524:90;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;451:69;;;:::i;:::-;;268:24;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;524:90;345:5;;;;;;;;;;331:19;;:10;:19;;;323:42;;;;;;;;;;;;:::i;:::-;;;;;;;;;603:4:::1;588:12;:19;;;;524:90:::0;:::o;451:69::-;345:5;;;;;;;;;;331:19;;:10;:19;;;323:42;;;;;;;;;;;;:::i;:::-;;;;;;;;;496:19:::1;;;;;;;;;;451:69::o:0;268:24::-;;;;:::o;88:117:2:-;197:1;194;187:12;334:77;371:7;400:5;389:16;;334:77;;;:::o;417:122::-;490:24;508:5;490:24;:::i;:::-;483:5;480:35;470:63;;529:1;526;519:12;470:63;417:122;:::o;545:139::-;591:5;629:6;616:20;607:29;;645:33;672:5;645:33;:::i;:::-;545:139;;;;:::o;690:329::-;749:6;798:2;786:9;777:7;773:23;769:32;766:119;;;804:79;;:::i;:::-;766:119;924:1;949:53;994:7;985:6;974:9;970:22;949:53;:::i;:::-;939:63;;895:117;690:329;;;;:::o;1025:118::-;1112:24;1130:5;1112:24;:::i;:::-;1107:3;1100:37;1025:118;;:::o;1149:222::-;1242:4;1280:2;1269:9;1265:18;1257:26;;1293:71;1361:1;1350:9;1346:17;1337:6;1293:71;:::i;:::-;1149:222;;;;:::o;1377:169::-;1461:11;1495:6;1490:3;1483:19;1535:4;1530:3;1526:14;1511:29;;1377:169;;;;:::o;1552:160::-;1692:12;1688:1;1680:6;1676:14;1669:36;1552:160;:::o;1718:366::-;1860:3;1881:67;1945:2;1940:3;1881:67;:::i;:::-;1874:74;;1957:93;2046:3;1957:93;:::i;:::-;2075:2;2070:3;2066:12;2059:19;;1718:366;;;:::o;2090:419::-;2256:4;2294:2;2283:9;2279:18;2271:26;;2343:9;2337:4;2333:20;2329:1;2318:9;2314:17;2307:47;2371:131;2497:4;2371:131;:::i;:::-;2363:139;;2090:419;;;:::o",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nstring constant api = \"https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY\";\ncontract Oracle {\n  constructor() {\n    owner = msg.sender;\n  }\n  address owner;\n  uint public numAsteroids;\n\n  modifier onlyOwner(){\n    require(msg.sender == owner, \"Only Owner\");\n    _;\n  }\n  // Evento que reciba datos del oraculo\n  event __callbackNewData();\n\n  function update() public onlyOwner{\n    emit __callbackNewData();\n  }\n\n  function setManualNumAsteroids(uint _num) public onlyOwner{\n    numAsteroids = _num;  \n  }\n}\n",
+  "sourceMap": "185:425:1:-:0;;;205:43;;;;;;;;;;233:10;225:5;;:18;;;;;;;;;;;;;;;;;;185:425;;;;;;",
+  "deployedSourceMap": "185:425:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;524:84;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;451:69;;;:::i;:::-;;268:24;;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;524:84;345:5;;;;;;;;;;331:19;;:10;:19;;;323:42;;;;;;;;;;;;:::i;:::-;;;;;;;;;597:4:::1;582:12;:19;;;;524:84:::0;:::o;451:69::-;345:5;;;;;;;;;;331:19;;:10;:19;;;323:42;;;;;;;;;;;;:::i;:::-;;;;;;;;;496:19:::1;;;;;;;;;;451:69::o:0;268:24::-;;;;:::o;88:117:2:-;197:1;194;187:12;334:77;371:7;400:5;389:16;;334:77;;;:::o;417:122::-;490:24;508:5;490:24;:::i;:::-;483:5;480:35;470:63;;529:1;526;519:12;470:63;417:122;:::o;545:139::-;591:5;629:6;616:20;607:29;;645:33;672:5;645:33;:::i;:::-;545:139;;;;:::o;690:329::-;749:6;798:2;786:9;777:7;773:23;769:32;766:119;;;804:79;;:::i;:::-;766:119;924:1;949:53;994:7;985:6;974:9;970:22;949:53;:::i;:::-;939:63;;895:117;690:329;;;;:::o;1025:118::-;1112:24;1130:5;1112:24;:::i;:::-;1107:3;1100:37;1025:118;;:::o;1149:222::-;1242:4;1280:2;1269:9;1265:18;1257:26;;1293:71;1361:1;1350:9;1346:17;1337:6;1293:71;:::i;:::-;1149:222;;;;:::o;1377:169::-;1461:11;1495:6;1490:3;1483:19;1535:4;1530:3;1526:14;1511:29;;1377:169;;;;:::o;1552:160::-;1692:12;1688:1;1680:6;1676:14;1669:36;1552:160;:::o;1718:366::-;1860:3;1881:67;1945:2;1940:3;1881:67;:::i;:::-;1874:74;;1957:93;2046:3;1957:93;:::i;:::-;2075:2;2070:3;2066:12;2059:19;;1718:366;;;:::o;2090:419::-;2256:4;2294:2;2283:9;2279:18;2271:26;;2343:9;2337:4;2333:20;2329:1;2318:9;2314:17;2307:47;2371:131;2497:4;2371:131;:::i;:::-;2363:139;;2090:419;;;:::o",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nstring constant api = \"https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY\";\ncontract Oracle {\n  constructor() {\n    owner = msg.sender;\n  }\n  address owner;\n  uint public numAsteroids;\n\n  modifier onlyOwner(){\n    require(msg.sender == owner, \"Only Owner\");\n    _;\n  }\n  // Evento que reciba datos del oraculo\n  event __callbackNewData();\n\n  function update() public onlyOwner{\n    emit __callbackNewData();\n  }\n\n  function setNumAsteroids(uint _num) public onlyOwner{\n    numAsteroids = _num;  \n  }\n}\n",
   "sourcePath": "V:\\_RelaxingCup\\cursos\\Solidity\\03_NFT_ETH_Ganache_Truffle_React\\04_Oracle\\contracts\\oracle.sol",
   "ast": {
     "absolutePath": "project:/contracts/oracle.sol",
@@ -1661,7 +1661,7 @@
             "body": {
               "id": 84,
               "nodeType": "Block",
-              "src": "582:32:1",
+              "src": "576:32:1",
               "statements": [
                 {
                   "expression": {
@@ -1676,7 +1676,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 50,
-                      "src": "588:12:1",
+                      "src": "582:12:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1690,13 +1690,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 75,
-                      "src": "603:4:1",
+                      "src": "597:4:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "588:19:1",
+                    "src": "582:19:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1704,11 +1704,11 @@
                   },
                   "id": 83,
                   "nodeType": "ExpressionStatement",
-                  "src": "588:19:1"
+                  "src": "582:19:1"
                 }
               ]
             },
-            "functionSelector": "072c2d2b",
+            "functionSelector": "01d05e9d",
             "id": 85,
             "implemented": true,
             "kind": "function",
@@ -1721,14 +1721,14 @@
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 62,
-                  "src": "573:9:1"
+                  "src": "567:9:1"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "573:9:1"
+                "src": "567:9:1"
               }
             ],
-            "name": "setManualNumAsteroids",
-            "nameLocation": "533:21:1",
+            "name": "setNumAsteroids",
+            "nameLocation": "533:15:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 76,
@@ -1739,10 +1739,10 @@
                   "id": 75,
                   "mutability": "mutable",
                   "name": "_num",
-                  "nameLocation": "560:4:1",
+                  "nameLocation": "554:4:1",
                   "nodeType": "VariableDeclaration",
                   "scope": 85,
-                  "src": "555:9:1",
+                  "src": "549:9:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1753,7 +1753,7 @@
                     "id": 74,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "555:4:1",
+                    "src": "549:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1762,27 +1762,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "554:11:1"
+              "src": "548:11:1"
             },
             "returnParameters": {
               "id": 79,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "582:0:1"
+              "src": "576:0:1"
             },
             "scope": 86,
-            "src": "524:90:1",
+            "src": "524:84:1",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 87,
-        "src": "185:431:1",
+        "src": "185:425:1",
         "usedErrors": []
       }
     ],
-    "src": "32:585:1"
+    "src": "32:579:1"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/oracle.sol",
@@ -2264,7 +2264,7 @@
             "body": {
               "id": 84,
               "nodeType": "Block",
-              "src": "582:32:1",
+              "src": "576:32:1",
               "statements": [
                 {
                   "expression": {
@@ -2279,7 +2279,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 50,
-                      "src": "588:12:1",
+                      "src": "582:12:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2293,13 +2293,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 75,
-                      "src": "603:4:1",
+                      "src": "597:4:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "588:19:1",
+                    "src": "582:19:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2307,11 +2307,11 @@
                   },
                   "id": 83,
                   "nodeType": "ExpressionStatement",
-                  "src": "588:19:1"
+                  "src": "582:19:1"
                 }
               ]
             },
-            "functionSelector": "072c2d2b",
+            "functionSelector": "01d05e9d",
             "id": 85,
             "implemented": true,
             "kind": "function",
@@ -2324,14 +2324,14 @@
                   "name": "onlyOwner",
                   "nodeType": "IdentifierPath",
                   "referencedDeclaration": 62,
-                  "src": "573:9:1"
+                  "src": "567:9:1"
                 },
                 "nodeType": "ModifierInvocation",
-                "src": "573:9:1"
+                "src": "567:9:1"
               }
             ],
-            "name": "setManualNumAsteroids",
-            "nameLocation": "533:21:1",
+            "name": "setNumAsteroids",
+            "nameLocation": "533:15:1",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 76,
@@ -2342,10 +2342,10 @@
                   "id": 75,
                   "mutability": "mutable",
                   "name": "_num",
-                  "nameLocation": "560:4:1",
+                  "nameLocation": "554:4:1",
                   "nodeType": "VariableDeclaration",
                   "scope": 85,
-                  "src": "555:9:1",
+                  "src": "549:9:1",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2356,7 +2356,7 @@
                     "id": 74,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "555:4:1",
+                    "src": "549:4:1",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2365,27 +2365,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "554:11:1"
+              "src": "548:11:1"
             },
             "returnParameters": {
               "id": 79,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "582:0:1"
+              "src": "576:0:1"
             },
             "scope": 86,
-            "src": "524:90:1",
+            "src": "524:84:1",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
         "scope": 87,
-        "src": "185:431:1",
+        "src": "185:425:1",
         "usedErrors": []
       }
     ],
-    "src": "32:585:1"
+    "src": "32:579:1"
   },
   "compiler": {
     "name": "solc",
@@ -2395,12 +2395,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x729eaCf939261410c6c81319dF60D8023Df81264",
-      "transactionHash": "0x1e2d2687b37557eca539843a14f31c7445af7902e1beb4ce1cb00d88574422ec"
+      "address": "0x57f23ae8B895Ec10221CA7932736A07C6F79376A",
+      "transactionHash": "0x13192b768f68d64de7b2392f6f4f744b6500841c1faa151e66ecbaad00453dc8"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-11-11T05:55:39.582Z",
+  "updatedAt": "2021-11-11T07:09:03.735Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

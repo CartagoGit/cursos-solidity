@@ -20,7 +20,7 @@ contract Oracle {
     emit __callbackNewData();
   }
 
-  function setManualNumAsteroids(uint _num) public onlyOwner{
+  function setNumAsteroids(uint _num) public onlyOwner{
     numAsteroids = _num;  
   }
 }

@@ -41,4 +41,8 @@ global = this
 ## Oracle
 
 ### Dependencias para la app
-npm i web3 ethereumjs-tx node-fetch
+npm i web3 
+ethereumjs-tx 
+cross-fetch 
+
+##### En el curso usaron node-fetch pero al usarlo en la practica no paraba de dar problemas con los modigos js, asi que busque alternativa de dependencias
