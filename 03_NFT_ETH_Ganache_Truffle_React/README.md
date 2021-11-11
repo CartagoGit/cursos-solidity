@@ -28,3 +28,12 @@ Instalamos truffle desde node y la usamos truffle init para inicializar desde la
 
 ### Documentación de Web3.js
 https://web3js.readthedocs.io/en/v1.5.2/
+
+#### Consola Truffle, comandos:
+##### Empezamos reseteando ganache para volver a compilar desde truffle y posteriormente migrarlo reseteandolo para evitar problemas
+truffle compile
+truffle migration --reset
+
+
+##### Una vez sale correcto, ya podemos empezar a usar la consola con "truffle console"
+global = this 
