@@ -49,7 +49,7 @@ function updateData() {
           const url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY";
           */
   const url =
-    "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY";
+    "https://api.nasa.gov/neo/rest/v1/feed?start_date=2019-04-26&end_date=2019-04-27&api_key=DEMO_KEY";
 
   //para acceder a la url
   fetch(url)
@@ -59,7 +59,6 @@ function updateData() {
 
 //Funcion: SetDataContact(_value)
 function setDataContract(_value) {
-  
   web3.eth.getTransactionCount(address, (err, txNum) => {
     //let nonce =  web3.eth.getTransactionCount(address);
     contractInstance.methods
@@ -74,7 +73,7 @@ function setDataContract(_value) {
           data: contractInstance.methods.setNumAsteroids(_value).encodeABI(),
         };
         console.log(txNum);
-        console.log(rawTx);
+        console.log(_value);
         const tx = new Tx(rawTx);
         tx.sign(privateKey);
         const serializedTx = tx.serialize().toString("hex");
