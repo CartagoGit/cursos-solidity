@@ -2,7 +2,7 @@
 pragma solidity >=0.8.0 <=0.8.10;
 //pragma experimental ABIEncoderV2;
 
-contract contractNotas{
+contract notas{
     
     // Direccion del profesor
     address public profesor;

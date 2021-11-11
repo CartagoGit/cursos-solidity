@@ -1,5 +1,5 @@
-const notas = artifacts.require("contractNotas");
+const notas = artifacts.require("notas");
 
-module.exports = function (deployer) {
-  deployer.deploy(notas);
+module.exports = function(deployer) {
+    deployer.deploy(notas);
 };
