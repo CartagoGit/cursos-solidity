@@ -6,7 +6,6 @@ contract Oracle {
   constructor() {
     owner = msg.sender;
   }
-
   address owner;
   uint public numAsteroids;
 
@@ -22,7 +21,6 @@ contract Oracle {
   }
 
   function setManualNumAsteroids(uint _num) public onlyOwner{
-    numAsteroids = _num;
-    
+    numAsteroids = _num;  
   }
 }
