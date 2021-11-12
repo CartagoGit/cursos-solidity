@@ -1115,13 +1115,18 @@ contract ERC721Full is ERC721, ERC721Enumerable, ERC721Metadata {
         return super._burn(owner, tokenId);
     }
 
-    function _mint(address owner, uint256 tokenId) internal override(ERC721, ERC721Enumerable)
+    function _mint(address owner, uint256 tokenId)
+        internal
+        override(ERC721, ERC721Enumerable)
     {
-        return super._mint(owner,tokenId);
+        return super._mint(owner, tokenId);
     }
 
-    function _transferFrom(address from, address to, uint256 tokenId
+    function _transferFrom(
+        address from,
+        address to,
+        uint256 tokenId
     ) internal override(ERC721, ERC721Enumerable) {
-        return super._transferFrom(from,to,tokenId);
+        return super._transferFrom(from, to, tokenId);
     }
 }
