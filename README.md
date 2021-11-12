@@ -9,3 +9,6 @@ Lo que indicaría, que el comit es del curso 2, en la seccion 4, y la clase 30
 
 ## Comando para acceder desde el localhost a remix en el IDE de chrome
 remixd -s V:\_RelaxingCup\cursos\Solidity\ --remix-ide https://remix.ethereum.org
+
+## Para añadir el plugin prettier para solidity 
+npm install --save-dev prettier prettier-plugin-solidity
