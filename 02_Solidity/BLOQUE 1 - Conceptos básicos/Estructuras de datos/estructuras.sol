@@ -1,35 +1,32 @@
 pragma solidity >=0.4.4 <0.8.9;
 
-contract Estructuras{
-    
+contract Estructuras {
     //Cliente de una pagina web de pago
-    struct cliente{
-        uint id;
+    struct cliente {
+        uint256 id;
         string name;
         string dni;
         string mail;
-        uint phone_number;
-        uint credit_number;
-        uint secret_number;
+        uint256 phone_number;
+        uint256 credit_number;
+        uint256 secret_number;
     }
-    
-    cliente pepe= cliente(1,"Pepe","123213213h", "pepe@gmail.com", 666666666, 1234, 11 );
+
+    cliente pepe =
+        cliente(1, "Pepe", "123213213h", "pepe@gmail.com", 666666666, 1234, 11);
 
     // Amazon (cualquier pagina de compraventa)
-    struct producto{
+    struct producto {
         string nombre;
-        uint precio;
+        uint256 precio;
     }
-    producto movil =producto("samsung", 300);
-    
+    producto movil = producto("samsung", 300);
+
     //Proyecto ONG
-    struct ONG{
+    struct ONG {
         address ong;
         string nombre;
-        
     }
-    
-    ONG caritas = ONG(0x5A8B9d31985a7246827F873426c2ef635924C0e5,"caritas");
-    
-    
+
+    ONG caritas = ONG(0x5A8B9d31985a7246827F873426c2ef635924C0e5, "caritas");
 }
